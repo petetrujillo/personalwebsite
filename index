@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pete Trujillo - AI Product Leader</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Custom Styles & Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind 'slate-50' */
+            color: #0f172a; /* Tailwind 'slate-900' */
+        }
+        
+        /* Custom class for active nav link */
+        .nav-active {
+            color: #2563eb; /* Tailwind 'blue-600' */
+            font-weight: 600;
+        }
+
+        /* Simple transition for nav links and buttons */
+        .nav-link, .cta-button {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #2563eb; /* Tailwind 'blue-600' */
+        }
+
+        /* REMOVED .section-title and .section-subtitle rules */
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand -->
+            <a href="#" class="text-xl font-bold text-blue-600" data-page="about">
+                Pete Trujillo
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="nav-link nav-active" data-page="about">About</a>
+                <a href="#projects" class="nav-link" data-page="projects">Projects</a>
+                <a href="#experience" class="nav-link" data-page="experience">Experience</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <a href="#about" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="about">About</a>
+            <a href="#projects" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="projects">Projects</a>
+            <a href="#experience" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="experience">Experience</a>
+            <a href="#contact" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- ======================= -->
+        <!--     About Section       -->
+        <!-- ======================= -->
+        <section id="about" class="page-section">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Text Content -->
+                <div class="flex-1">
+                    <span class="text-blue-600 font-semibold">AI Product Leader | Ethical Innovation</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6 leading-tight">
+                        Pete Trujillo: Dynamic AI Product Strategist
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-6">
+                        I am a product strategist with over 15 years of experience in senior product leadership, advanced data analytics, and consumer research. My passion lies in bridging the gap between technology and public interest, ensuring that innovative AI solutions are built with transparency, fairness, and accountability.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-8">
+                        My career has been dedicated to leading cross-functional teams to deliver cutting-edge AI solutions, particularly within Chatbot and Voicebot applications, that fundamentally transform customer engagement and drive significant business growth.
+                    </p>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#projects" class="cta-button bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 text-center nav-link-cta" data-page="projects">
+                            View My Projects
+                        </a>
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 text-center inline-flex items-center justify-center gap-2">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <!-- Profile Image Placeholder -->
+                <div class="flex-shrink-0 w-64 h-64 md:w-80 md:h-80">
+                    <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Pete+Trujillo" 
+                         alt="Pete Trujillo"
+                         class="rounded-full shadow-xl object-cover w-full h-full border-8 border-white">
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= -->
+        <!--    Projects Section     -->
+        <!-- ======================= -->
+        <section id="projects" class="page-section hidden mt-16 md:mt-24">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Projects</h2>
+            <p class="text-lg text-slate-600 text-center max-w-2xl mx-auto mb-12">
+                A selection of projects I've led and developed. Here's where I apply my expertise in product strategy, data analytics, and ethical AI.
+            </p>
+
+            <!-- Work Projects -->
+            <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-4">Work Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1: AI B2B Analytics -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-blue-600 text-white font-bold text-lg">AI Analytics</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">AI B2B Analytics Solutions</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            Spearheaded AI B2B analytics for conversational AI, impacting 100+ Fortune 500 clients and supporting over $100M in annual revenue.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Product Strategy</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Data Analytics</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">B2B SaaS</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Voice of Client Program -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-emerald-600 text-white font-bold text-lg">Voice of Client</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Voice of Client (VOC) Transformation</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            Achieved a +14% Y-o-Y increase in NPS and +17% CSAT for a major Telco client by aligning AI objectives with strategic goals.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-3 py-1 rounded-full">CX Transformation</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NPS/CSAT</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NLP</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Case Study (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Nina Coach (HITL) -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-indigo-600 text-white font-bold text-lg">Human-in-the-Loop</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Nina Coach (Human-in-the-Loop)</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            Piloted a Human-in-the-Loop solution (Nina Coach) that intelligently routed low-confidence queries to experts, reducing escalations by 9%.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">AI Ethics</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Automation</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Product Launch</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Learn More (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW Project Card 4: Placeholder -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">New Work Project</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Placeholder Project Title</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            This is where the description of your fourth project will go. It wraps perfectly to the next line, aligning with the grid.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">New Skill</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Projects -->
+            <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-12">School Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Placeholder School Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">Purdue Capstone</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">AI Policy Research Project</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            An in-depth analysis of global AI regulatory frameworks (GDPR, NIST) and their impact on enterprise compliance and systemic risk.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI Ethics</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NIST</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">GDPR</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Paper (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Projects -->
+            <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-12">Personal Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Placeholder Personal Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-rose-600 text-white font-bold text-lg">Personal Project</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">My "Fun" Project Title</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            A cool thing I built in my spare time to learn a new technology or explore a hobby.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-rose-100 text-rose-800 text-xs font-medium px-3 py-1 rounded-full">Fun</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">React</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Firebase</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBY)</a>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!--   Experience Section    -->
+        <!-- ======================= -->
+        <section id="experience" class="page-section hidden mt-16 md:mt-24">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Experience & Education</h2>
+            <div class="text-center mb-12">
+                <!-- User: Remember to upload your resume and link it here -->
+                <a href="Pete Trujillo - Product Manager - Resume V251022.pdf" download="Pete Trujillo - Resume.pdf" class="cta-button bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center gap-2">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    Download Full Resume
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                
+                <!-- Work Experience & Education -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-3xl font-bold text-slate-800 mb-6">Work Experience</h3>
+                    <div class="space-y-6">
+                        <!-- Tile Item: Microsoft -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <span class="text-sm font-medium text-slate-500">2022 - 2024</span>
+                            <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Manager, AI & Analytics Solutions</h4>
+                            <h5 class="text-md font-medium text-slate-600 mb-2">Microsoft (Remote)</h5>
+                            <p class="text-slate-600 text-base">
+                                Led AI-powered B2B analytics solutions for chatbot/voicebot platforms, supporting $100M+ in revenue. Directed product initiatives, led VOC insights boosting NPS +14%, and managed strategic portfolio transitions.
+                            </p>
+                        </div>
+                        
+                        <!-- Tile Item: Nuance -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <span class="text-sm font-medium text-slate-500">2017 - 2022</span>
+                            <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Owner, Insights & Analytics</h4>
+                            <h5 class="text-md font-medium text-slate-600 mb-2">Nuance Communications (Agoura Hills, CA)</h5>
+                            <p class="text-slate-600 text-base">
+                                Delivered AI analytics and optimization strategies for enterprise clients. Developed a new human-in-the-loop AI bot, automated VOC analysis with NLP (cutting labor 60%), and piloted Nina Coach beta.
+                            </p>
+                        </div>
+
+                        <!-- Tile Item: J.D. Power -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <span class="text-sm font-medium text-slate-500">2010 - 2017</span>
+                            <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Manager, Consumer Research</h4>
+                            <h5 class="text-md font-medium text-slate-600 mb-2">J.D. Power (Westlake Village, CA)</h5>
+                            <p class="text-slate-600 text-base">
+                                Drove innovation in AI analytics and digital benchmarking. Championed 30+ product launches, created behavioral UX research studies, and delivered high-impact insights to Fortune 100 executives.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-10">Education</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-lg font-semibold text-slate-800">Master of Science, Artificial Intelligence: Management & Policy</h4>
+                            <p class="text-slate-600 mb-2">Purdue University (Expected Dec 2025)</p>
+                            <ul class="list-disc list-inside text-slate-500 text-sm">
+                                <li>Graduate Certificate, Foundations in AI</li>
+                                <li>Graduate Certificate, Applied Data Analytics</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-lg font-semibold text-slate-800">Bachelor of Science, Consumer Affairs</h4>
+                            <p class="text-slate-600">California State University-Northridge</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-6">Certifications</h3>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                <span class="text-slate-700">Certified SAFe 6 POPM</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                <span class="text-slate-700">Certified Scrum Product Owner (CSPO)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                <span class="text-slate-700">Product Manager (PMC) & AI for Product (AIPC)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!--     Contact Section     -->
+        <!-- ======================= -->
+        <section id="contact" class="page-section hidden mt-16 md:mt-24">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Let's Connect</h2>
+            <p class="text-lg text-slate-600 text-center max-w-xl mx-auto mb-12">
+                I'm always interested in discussing AI policy, product strategy, or new project ideas.
+                Feel free to reach out via email or connect with me on LinkedIn.
+            </p>
+            
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
+                <img src="https://placehold.co/150x150/e2e8f0/64748b?text=PT" 
+                     alt="Pete Trujillo"
+                     class="rounded-full w-24 h-24 border-4 border-white -mt-20 mb-4 shadow-lg">
+                
+                <h3 class="text-2xl font-semibold text-slate-800">Pete Trujillo</h3>
+                <p class="text-slate-500 mb-6">AI Product Leader</p>
+                
+                <div class="flex flex-col gap-4 w-full">
+                     <a href="mailto:pete.tru@gmail.com" class="cta-button bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        pete.tru@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 mt-24">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-sm">&copy; 2025 Pete Trujillo. All rights reserved.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Lucide Icons ---
+            lucide.createIcons();
+
+            // --- Page Navigation Logic ---
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-link-cta');
+            const pageSections = document.querySelectorAll('.page-section');
+            const desktopNavLinks = document.querySelectorAll('.nav-link');
+            
+            function showPage(pageId) {
+                // Hide all sections
+                pageSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show the target section
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+                
+                // Update active state for desktop nav
+                desktopNavLinks.forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('nav-active');
+                    } else {
+                        link.classList.remove('nav-active');
+                    }
+                });
+                
+                // Scroll to top of page
+                window.scrollTo(0, 0);
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.dataset.page;
+                    showPage(pageId);
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                    // Update URL hash
+                    window.location.hash = pageId;
+                });
+            });
+            
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Handle Hash on Page Load ---
+            const currentHash = window.location.hash.substring(1);
+            if (currentHash) {
+                showPage(currentHash);
+            } else {
+                showPage('about'); // Default page
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
