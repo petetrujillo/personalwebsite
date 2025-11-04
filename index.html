@@ -13,11 +13,31 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Tailwind 'slate-50' */
-            color: #0f172a; /* Tailwind 'slate-900' */
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Tailwind 'slate-50' */
+    color: #0f172a; /* Tailwind 'slate-900' */
+    font-size: 15px;       /* slightly smaller than default */
+    line-height: 1.6;      /* improve readability */
+}
+
+/* Headings */
+h1 {
+    font-size: 2rem;       /* ~32px */
+    font-weight: 700;
+}
+h2 {
+    font-size: 1.5rem;     /* ~24px */
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.25rem;    /* ~20px */
+    font-weight: 600;
+}
+p {
+    margin-bottom: 1em;
+}
+
         
         /* Custom class for active nav link */
         .nav-active {
@@ -33,8 +53,6 @@
         .nav-link:hover {
             color: #2563eb; /* Tailwind 'blue-600' */
         }
-
-        /* REMOVED .section-title and .section-subtitle rules */
 
     </style>
 </head>
@@ -81,22 +99,26 @@
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <!-- Text Content -->
                 <div class="flex-1">
-                    <span class="text-blue-600 font-semibold">AI Product Leader | Ethical Innovation</span>
-                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6 leading-tight">
-                        Pete Trujillo: Dynamic AI Product Strategist
-                    </h1>
+                    <span class="text-blue-600 font-semibold">AI Product Leader | Data‑Driven Strategist | Ethical Innovator</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6 leading-tight">
+                        Pete Trujillo
+                    </h2>
                     <p class="text-lg text-slate-600 mb-6">
-                        I am a product strategist with over 15 years of experience in senior product leadership, advanced data analytics, and consumer research. My passion lies in bridging the gap between technology and public interest, ensuring that innovative AI solutions are built with transparency, fairness, and accountability.
+                        Helping organizations adopt AI with clarity, transparency, and measurable ROI
+                        I  am a product strategist and senior AI product leader with 15+ years of experience driving innovation at the intersection of technology, analytics, and customer experience. My career spans leadership roles at Microsoft, Nuance, and J.D. Power, where I’ve guided cross‑functional teams to deliver AI‑driven products that transform engagement and unlock measurable business growth.
                     </p>
                     <p class="text-lg text-slate-600 mb-8">
-                        My career has been dedicated to leading cross-functional teams to deliver cutting-edge AI solutions, particularly within Chatbot and Voicebot applications, that fundamentally transform customer engagement and drive significant business growth.
+                        Currently completing my Master’s in Artificial Intelligence – Management & Policy at Purdue, I specialize in building solutions that are not only technically advanced but also transparent, fair, and accountable. From chatbots and voicebots to explainable AI prototypes and governance frameworks, my work demonstrates how responsible AI can be both practical and scalable.
+                    </p>
+					                    <p class="text-lg text-slate-600 mb-8">
+                       I thrive on turning complex challenges into clear strategies, leading teams through ambiguity, and ensuring that every product I deliver balances innovation, impact, and trust.
                     </p>
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#projects" class="cta-button bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 text-center nav-link-cta" data-page="projects">
                             View My Projects
                         </a>
-                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 text-center inline-flex items-center justify-center gap-2">
+                        <a href="https://www.linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 text-center inline-flex items-center justify-center gap-2">
                             <i data-lucide="linkedin" class="w-5 h-5"></i>
                             Connect on LinkedIn
                         </a>
@@ -124,17 +146,18 @@
             <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-4">Work Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- NEW Project Card 4: Placeholder -->
+                <!-- Project Card 1: AI B2B Analytics -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
-                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">New Work Project</div>
+                    <div class="p-3 bg-blue-600 text-white font-bold text-lg">AI Analytics</div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Placeholder Project Title</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">xx</h3>
                         <p class="text-slate-600 mb-4 text-base">
-                            This is where the description of your fourth project will go. It wraps perfectly to the next line, aligning with the grid.
+                            yy
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">New Skill</span>
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Product Strategy</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Data Analytics</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">B2B SaaS</span>
                         </div>
                         <div class="flex gap-4">
                             <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a>
@@ -142,47 +165,44 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-                <!-- NEW Project Card 4: Placeholder -->
+                <!-- Project Card 2: Voice of Client Program -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
-                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">New Work Project</div>
+                    <div class="p-3 bg-emerald-600 text-white font-bold text-lg">Voice of Client</div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Placeholder Project Title</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">xx</h3>
                         <p class="text-slate-600 mb-4 text-base">
-                            This is where the description of your fourth project will go. It wraps perfectly to the next line, aligning with the grid.
+                            xx
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">New Skill</span>
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-3 py-1 rounded-full">CX Transformation</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NPS/CSAT</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NLP</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a>
-                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Case Study (TBD)</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-                <!-- NEW Project Card 4: Placeholder -->
+                <!-- Project Card 3: Nina Coach (HITL) -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
-                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">New Work Project</div>
+                    <div class="p-3 bg-indigo-600 text-white font-bold text-lg">Human-in-the-Loop</div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Placeholder Project Title</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">x</h3>
                         <p class="text-slate-600 mb-4 text-base">
-                            This is where the description of your fourth project will go. It wraps perfectly to the next line, aligning with the grid.
+                            x
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">New Skill</span>
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Technology</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">AI Ethics</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Automation</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Product Launch</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a>
-                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Learn More (TBD)</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
                 <!-- NEW Project Card 4: Placeholder -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
@@ -207,21 +227,105 @@
             <!-- School Projects -->
             <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-12">School Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Placeholder School Project -->
+                
+				                <!-- School Project Card 3 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
-                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">Purdue Capstone</div>
+                    <div class="p-3 bg-blue-600 text-white font-bold text-lg">Purdue Capstone Project</div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-slate-800 mb-2">AI Policy Research Project</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Explainable AI Tutor & Governance Framework for Secondary Education</h3>
                         <p class="text-slate-600 mb-4 text-base">
-                            An in-depth analysis of global AI regulatory frameworks (GDPR, NIST) and their impact on enterprise compliance and systemic risk.
+                         Developed a full‑stack instructional AI prototype for middle school that delivers explainable scoring and safe, transparent learning support. The system integrates multi‑agent LLM orchestration (Evaluator, Tutor, SME) with a RAG‑constrained knowledge base. The project highlights applied skills in AI development, system design, and user‑centered product thinking.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI Ethics</span>
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NIST</span>
-                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">GDPR</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Explainable AI (XAI)</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">LLM Multi‑Agent Systems</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">RAG</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">User Persona–Driven Design</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">EdTech</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Full Stack AI Product Development</span>
+                        </div>
+                   
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">Live Demo (TBD)</a><BR>
+                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Code (TBD)</a><BR>
+							<a href="#" class="text-blue-600 font-medium hover:underline text-base">View Paper (TBD)</a>
+                    </div>
+                </div>
+				
+				                <!-- School Project Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">AI Policy Research</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">AIs Role in Wildfire Mitigation</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            This policy paper analyzes California's complex, multi-agency wildfire governance. It argues that organizational issues create inconsistent AI policies and recommends centralizing all AI technology evaluation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI Governance</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Stakeholder Analysis</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">NIST AI RMF</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Public Sector Tech</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 font-medium hover:underline text-base">View Paper (TBD)</a>
+                            <a href="assets/pb_ca_wildfires.pdf" class="text-blue-600 font-medium hover:underline text-base">View Policy Research Paper</a>
+                        </div>
+                    </div>
+                </div>
+				<!-- School Project Card 4 -->
+				<div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">Policy Brief</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Policy Brief: California's AI Energy Problem</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            This brief examines AI's massive energy consumption, a risk to California's clean energy goals. It introduces BP2030, a framework for transparency and efficiency ratings to support a sustainable, AI-powered economy.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI Policy</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Sustainability</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI Ethics</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Energy Policy</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Policy Framework Design</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="assets/pb_ca_ai_energy_problem.pdf" class="text-blue-600 font-medium hover:underline text-base">View Policy Brief</a>
+                        </div>
+                    </div>
+				</div>	
+                <!-- School Project Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">Business Plan</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">InVision Learning Business Plan</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            This is a complete business plan for InVision Learning, a proposed start-up using AI and VR to create an "Expert Experience Simulator". The platform is designed to revolutionize healthcare training through customizable, immersive simulations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">AI/VR</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Financial Modeling</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Go-to-Market Strategy</span>
+							 <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">EdTech</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="assets/#" class="text-blue-600 font-medium hover:underline text-base">View Business Plan</a>
+                        </div>
+                    </div>
+                </div>
+				
+                <!-- School Project Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-3 bg-slate-600 text-white font-bold text-lg">AI Product Pitch</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Memorable Moments Pitch Deck</h3>
+                        <p class="text-slate-600 mb-4 text-base">
+                            A product concept for "Memorable Moments AI," a system to enhance cruise guest satisfaction. It uses on-ship cameras and machine vision to identify guests, enabling staff to provide hyper-personalized service.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Computer Vision (CNN)</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Machine Learning</span>
+                            <span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Risk Management</span>
+							<span class="bg-slate-100 text-slate-800 text-xs font-medium px-3 py-1 rounded-full">Customer Experience (CX)</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="assets/bp_invision_learning.pdf" class="text-blue-600 font-medium hover:underline text-base">View Pitch Deck</a>
                         </div>
                     </div>
                 </div>
@@ -368,7 +472,7 @@
                         <i data-lucide="mail" class="w-5 h-5"></i>
                         pete.tru@gmail.com
                     </a>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                    <a href="https://www.linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
                         <i data-lucide="linkedin" class="w-5 h-5"></i>
                         Connect on LinkedIn
                     </a>
@@ -383,10 +487,10 @@
         <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p class="text-sm">&copy; 2025 Pete Trujillo. All rights reserved.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                 </a>
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://github.com/petetrujillo/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="github" class="w-6 h-6"></i>
                 </a>
             </div>
