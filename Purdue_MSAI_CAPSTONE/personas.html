@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persona Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    
+    <div class="max-w-7xl mx-auto p-10">
+        
+        <h1 class="text-4xl font-bold text-gray-800 mb-12 text-center">Project Persona Details</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                <img src="assets/anna-admin.png" alt="Anna Admin Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">Anna Admin</h2>
+                <p class="text-gray-500 text-center mb-6">(District Administrator)</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Role</h3>
+                <p class="text-gray-600 mb-4">A district-level administrator responsible for technology adoption and oversight.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Primary Goal</h3>
+                <p class="text-gray-600 mb-4">To adopt AI tools responsibly. Anna is focused on proving a clear Return on Investment (ROI)—both in financial terms (like saving teacher time) and educational terms (like improving student scores).</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Key Needs</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>Her top priority is ensuring "ironclad compliance" with laws like FERPA and COPPA.</li>
+                    <li>Needs access to audit logs, safety guardrails, and clear data governance controls.</li>
+                    <li>Needs a high-level dashboard to see which schools and teachers are actively using the tool.</li>
+                    <li>Wants to identify district-wide "hotspots" where students are struggling with specific concepts.</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                <img src="assets/tom-teacher.png" alt="Tom Teacher Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">Tom Teacher</h2>
+                <p class="text-gray-500 text-center mb-6">(Classroom Teacher)</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Role</h3>
+                <p class="text-gray-600 mb-4">An experienced classroom teacher who is skeptical of AI and fears it being a "black box".</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Primary Goal</h3>
+                <p class="text-gray-600 mb-4">To save time and gain actionable insights into his students' performance without giving up control or sacrificing instructional quality.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Key Needs</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>Biggest demand is transparency; must be able to see why the AI generated a score.</li>
+                    <li>Must have the ability to manually override any grade.</li>
+                    <li>Needs to quickly identify which students are struggling and why.</li>
+                    <li>Relies on "Student Concept Gaps" chart to see who is memorizing vs. understanding.</li>
+                    <li>Wants to manage his own curriculum by uploading his own lesson plans or materials.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                <img src="assets/paula-parent.png" alt="Paula Parent Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">Paula Parent</h2>
+                <p class="text-gray-500 text-center mb-6">(Parent/Guardian)</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Role</h3>
+                <p class="text-gray-600 mb-4">A concerned parent who is "cautious about AI" and values her child's safety and well-being above all else.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Primary Goal</h3>
+                <p class="text-gray-600 mb-4">To gain "peace of mind" by ensuring the AI tool is safe, private, and genuinely supporting her child's learning, not just acting as a distraction.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Key Needs</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>Number one concern is safety; needs proactive safety alerts for emotional red flags.</li>
+                    <li>Wants to see what her child is learning and discussing.</li>
+                    <li>Requires "plain-language" explanations and access to full chat transcripts.</li>
+                    <li>Demands simple, clear controls to understand data collection and to opt-out, export, or delete data.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                <img src="assets/steve-student.png" alt="Steve Student Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">Steve Student</h2>
+                <p class="text-gray-500 text-center mb-6">(Middle School Student)</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Role</h3>
+                <p class="text-gray-600 mb-4">A middle school student who finds traditional lessons "boring" and is motivated by interactive experiences.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Primary Goal</h3>
+                <p class="text-gray-600 mb-4">To use a tool that makes learning "easier, more interesting, and fair". He wants to be engaged and feel a sense of progress and accomplishment.</p>
+                
+                <h3 class="font-semibold text-lg text-gray-800">Key Needs</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>Motivated by game-like features: badges, hot streaks, and a "Skills Map".</li>
+                    <li>Needs immediate, clear feedback he can understand.</li>
+                    <li>Wants a way to "be heard" via a "Score Appeal" / "Flag for Review" button.</li>
+                    <li>Prefers "natural conversation" and asking follow-up questions (rewarded with "Curiosity Bonus").</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="index.html" class="text-lg font-medium text-blue-600 hover:underline">
+                &larr; Back to Project Hub
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

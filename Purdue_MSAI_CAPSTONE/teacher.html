@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto">
+                
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">Period 3 - Ai Foundations</h1>
+                        
+                        <div class="flex items-center space-x-2">
+                            <label for="class_picker" class="text-sm font-medium text-gray-700">Class:</label>
+                            <select id="class_picker" class="p-2 border rounded-md text-sm">
+                                <option>Period 1 - Study Hall</option>
+                                <option>Period 2 - Digital Literacy</option>
+                                <option selected>Period 3 - Ai Foundations</option>
+                                <option>Period 5 - Ai Foundations</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <nav class="p-5">
+                        <ul class="flex space-x-6 text-gray-600">
+                            <li><a href="javascript:void(0)" class="nav-link font-semibold text-blue-600 border-b-2 border-blue-600 pb-1" data-target="content-overview">Class Overview</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link hover:text-gray-900" data-target="content-students">Students</a></li>
+                            <li><a href="javascript:void(0)" class="nav-link hover:text-gray-900" data-target="content-topics">Topics</a></li>
+                            <li class="ml-auto"><a href="teacher-toolkit.html" class="hover:text-gray-900 font-medium text-blue-700">Teacher Toolkit ↗</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                
+                <div id="content-overview" class="tab-content">
+                    <div class="bg-white p-4 rounded-lg shadow mb-6 flex flex-col md:flex-row gap-4">
+                        <div>
+                            <label for="student_filter" class="text-sm font-medium text-gray-700">Filter by Student:</label>
+                            <select id="student_filter" class="p-2 border rounded-md mt-1 text-sm">
+                                <option value="all">All Students</option>
+                                <option value="S00016">S00016</option>
+                                <option value="S00010">S00010</option>
+                                <option value="S00015">S00015</option>
+                                <option value="S00004">S00004</option>
+                                <option value="S00003">S00003</option>
+                                <option value="S00001">S00001</option>
+                                <option value="S00006">S00006</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="date_filter" class="text-sm font-medium text-gray-700">Filter by Date:</label>
+                            <select id="date_filter" class="p-2 border rounded-md mt-1 text-sm">
+                                <option value="mtd">This month to date</option>
+                                <option value="day">Last 1 day</option>
+                                <option value="week">This week</option>
+                                <option value="last_week">Prior week</option>
+                                <option value="3_month">Last 3 months</option>
+                                <option value="semester">This semester</option>
+                                <option value="year">This school year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Student Confidence</h3>
+                            <p class="text-xs text-gray-500 mb-2">(Explanation vs. Correctness)</p>
+                            <div id="confidence_scatter_div" class="h-64 w-full"></div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Student Concept Gaps</h3>
+                            <p class="text-xs text-gray-500 mb-2">Filtered by dropdown above.</p>
+                            <div id="concept_gap_chart_div" class="h-64 w-full"></div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Recent Submissions</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Steve – "AI Bias" (<span class="font-medium text-orange-600">62</span>)</li>
+                                <li>• Leo – "Prompt Engineering" (<span class="font-medium text-green-600">91</span></li>
+                                <li>• Alex – "Neural Networks" (<span class="font-medium text-red-600">41</span>)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow mb-6">
+                        <h3 class="font-semibold text-gray-900 mb-3">Classroom Topic Heatmap</h3>
+                        <div id="heatmap_table_div" class="w-full"></div>
+                    </div>
+                </div>
+
+                <div id="content-students" class="tab-content hidden">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Student Roster</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student ID</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg Score</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Topics Mastered</th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">View</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Alex Johnson</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">S00001</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">48</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 / 14</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-blue-600 hover:text-blue-900">View Report</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Leo Kim</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">S00003</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">91</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">11 / 14</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-blue-600 hover:text-blue-900">View Report</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Steve Student</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">S00004</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-orange-600">62</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5 / 14</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-blue-600 hover:text-blue-900">View Report</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-topics" class="tab-content hidden">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">Topic Management</h3>
+                            <button class="text-sm bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700">Add New Topic</button>
+                        </div>
+                        <ul class="divide-y divide-gray-200">
+                            <li class="py-4 flex justify-between items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">AI Regulation</p>
+                                    <p class="text-sm text-gray-500">3 sub-modules, 5 questions</p>
+                                </div>
+                                <div class="space-x-2">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    <a href="#" class="text-red-600 hover:text-red-900">Disable</a>
+                                </div>
+                            </li>
+                            <li class="py-4 flex justify-between items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Neural Networks</p>
+                                    <p class="text-sm text-gray-500">2 sub-modules, 4 questions</p>
+                                </div>
+                                <div class="space-x-2">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    <a href="#" class="text-gray-400 cursor-not-allowed">Disabled</a>
+                                </div>
+                            </li>
+                            <li class="py-4 flex justify-between items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Ethical AI</p>
+                                    <p class="text-sm text-gray-500">4 sub-modules, 6 questions</p>
+                                </div>
+                                <div class="space-x-2">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    <a href="#" class="text-red-600 hover:text-red-900">Disable</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    
+        google.charts.load('current', {'packages':['corechart', 'table']});
+        google.charts.setOnLoadCallback(drawAllCharts);
+
+        var conceptGapData;
+
+        function drawAllCharts() {
+            drawConfidenceScatter();
+            
+            conceptGapData = google.visualization.arrayToDataTable([
+                ['StudentID', 'False', 'True'],
+                ['S00016', 58, 42],
+                ['S00010', 42, 58],
+                ['S00015', 52, 48],
+                ['S00004', 55, 45],
+                ['S00003', 52, 48],
+                ['S00001', 54, 46],
+                ['S00006', 51, 49]
+            ]);
+            
+            drawConceptGapChart(); 
+            
+            var filterSelect = document.getElementById('student_filter');
+            filterSelect.addEventListener('change', drawConceptGapChart);
+
+            drawHeatmapTable();
+            
+            setupTabs();
+        }
+
+        function drawConfidenceScatter() {
+            var data = google.visualization.arrayToDataTable([
+                ['Average Explanation Score', 'Average Correctness Score'],
+                [59, 58], [60, 61], [62, 63], [58, 59], [64, 66],
+                [61, 62], [55, 54], [56, 55], [63, 65], [65, 67]
+            ]);
+
+            var options = {
+                hAxis: { title: 'Average Explanation Score', minValue: 50, maxValue: 70 },
+                vAxis: { title: 'Average Correctness Score', minValue: 50, maxValue: 70 },
+                legend: 'none',
+                chartArea: { width: '80%', height: '75%' },
+                colors: ['#3b82f6']
+            };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('confidence_scatter_div'));
+            chart.draw(data, options);
+        }
+
+        function drawConceptGapChart() {
+            var selectedStudent = document.getElementById('student_filter').value;
+            
+            var view = new google.visualization.DataView(conceptGapData);
+            
+            if (selectedStudent !== 'all') {
+                var studentRows = conceptGapData.getFilteredRows([{
+                    column: 0,
+                    value: selectedStudent
+                }]);
+                view.setRows(studentRows);
+            }
+
+            var options = {
+                'isStacked': 'percent',
+                'legend': { 'position': 'top', 'alignment': 'center' },
+                'hAxis': { 'minValue': 0, 'ticks': [0, .2, .4, .6, .8, 1] },
+                'vAxis': { 'textStyle': { 'fontSize': 12 } },
+                'colors': ['#a3a3a3', '#e11d48'], // Gray and Red
+                'chartArea': { 
+                    'left': 80,
+                    'top': 40,
+                    'width': '65%', 
+                    'height': '65%' 
+                }, 
+                'bar': { 'groupWidth': '75%' }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('concept_gap_chart_div'));
+            chart.draw(view, options);
+        }
+
+        function drawHeatmapTable() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Question');
+            data.addColumn('number', 'Average Final Score');
+            data.addColumn('number', 'Average Correctness Score');
+            data.addColumn('number', 'Average Explanation Score');
+            data.addColumn('number', 'Average of TimeTaken');
+            data.addRows([
+                ['AI Regulation', 53.28, 52.48, 54.48, 168.77],
+                ['Neural Networks', 56.61, 56.74, 56.42, 146.50],
+                ['Ethical AI', 57.41, 58.18, 56.24, 169.84],
+                ['Zero-shot Learning', 58.32, 59.02, 57.27, 152.30],
+                ['Overfitting', 59.27, 59.85, 58.40, 161.87],
+                ['Model Drift', 59.40, 60.04, 58.44, 150.21],
+                ['Testing Data', 59.61, 59.70, 59.47, 161.26],
+                ['Hyperparameter Tuning', 59.97, 59.44, 60.76, 164.38],
+                ['Bias', 60.04, 59.07, 61.49, 164.98],
+                ['Transfer Learning', 60.17, 60.91, 59.07, 176.05],
+                ['Reinforcement Learning', 60.86, 59.52, 62.89, 152.68],
+                ['Prompt Engineering', 60.96, 61.12, 60.73, 158.22],
+                ['Validation Set', 61.23, 61.92, 60.19, 158.42],
+                ['Precision vs Recall', 62.29, 63.31, 60.76, 164.31]
+            ]);
+
+            var scoreFormatter = new google.visualization.ColorFormat();
+            scoreFormatter.addRange(0, 55, 'black', '#fecaca'); 
+            scoreFormatter.addRange(55, 60, 'black', '#fef08a');
+            scoreFormatter.addRange(60, 100, 'black', '#dbeafe');
+            
+            scoreFormatter.format(data, 1); 
+            scoreFormatter.format(data, 2); 
+            scoreFormatter.format(data, 3); 
+
+            var timeFormatter = new google.visualization.ColorFormat();
+            timeFormatter.addRange(0, 155, 'black', '#dcfce7'); 
+            timeFormatter.addRange(165, 200, 'black', '#fee2e2');
+
+            timeFormatter.format(data, 4); 
+
+            var table = new google.visualization.Table(document.getElementById('heatmap_table_div'));
+            table.draw(data, {allowHtml: true, showRowNumber: false, width: '100%', height: '100%'});
+        }
+        
+        // Redraw charts on window resize
+        window.addEventListener('resize', drawAllCharts);
+        
+        function setupTabs() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPanes = document.querySelectorAll('.tab-content');
+            
+            const activeClasses = ['font-semibold', 'text-blue-600', 'border-b-2', 'border-blue-600', 'pb-1'];
+            const inactiveClasses = ['hover:text-gray-900'];
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const targetId = link.getAttribute('data-target');
+                    
+                    contentPanes.forEach(pane => {
+                        if (pane.id === targetId) {
+                            pane.classList.remove('hidden');
+                        } else {
+                            pane.classList.add('hidden');
+                        }
+                    });
+                    
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove(...activeClasses);
+                        navLink.classList.add(...inactiveClasses);
+                    });
+                    
+                    link.classList.add(...activeClasses);
+                    link.classList.remove(...inactiveClasses);
+                });
+            });
+        }
+
+    </script>
+
+</body>
+</html>

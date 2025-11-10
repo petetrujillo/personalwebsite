@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Admin Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto">
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">Admin Portal: System Configuration</h1>
+                    </div>
+                    </header>
+
+                <div class="flex gap-8">
+                    
+                    <aside class="w-1/4">
+                        <nav class="sticky top-8">
+                            <ul class="space-y-3">
+                                <li><a href="#health" class="font-semibold text-blue-600 hover:text-blue-800">System Health</a></li>
+                                <li><a href="#scoring" class="font-medium text-gray-600 hover:text-blue-800">Scoring & Rubrics</a></li>
+                                <li><a href="#pacing" class="font-medium text-gray-600 hover:text-blue-800">Interaction & Pacing</a></li>
+                                <li><a href="#safety" class="font-medium text-gray-600 hover:text-blue-800">Content & Safety</a></li>
+                                <li><a href="#kb" class="font-medium text-gray-600 hover:text-blue-800">Knowledge Base</a></li>
+                                <li><a href="#governance" class="font-medium text-gray-600 hover:text-blue-800">Data Governance</a></li>
+                                <li><a href="#logs" class="font-medium text-gray-600 hover:text-blue-800">Log Viewer</a></li>
+                                <li><a href="#access" class="font-medium text-gray-600 hover:text-blue-800">Access Controls</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <main class="w-3/4">
+                        <section id="health" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">ADMIN System Health Dashboard</h2>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-green-50 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold text-green-700">99.98%</div>
+                                    <div class="text-sm text-green-600">System Uptime</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold text-blue-700">120ms</div>
+                                    <div class="text-sm text-blue-600">Avg. API Response</div>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold text-red-700">0.05%</div>
+                                    <div class="text-sm text-red-600">API Error Rate</div>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold text-yellow-700">$45.10</div>
+                                    <div class="text-sm text-yellow-600">API Costs (MTD)</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="scoring" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">Scoring & Rubric Configuration</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Conceptual Gap Trigger</label>
+                                    <p class="text-xs text-gray-500 mb-1">Flag when Explanation &lt; X AND Correctness &gt; Y</p>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="number" value="30" class="w-20 p-2 border rounded-md">
+                                        <input type="number" value="70" class="w-20 p-2 border rounded-md">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Bonus Points</label>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="text-sm">Curiosity:</span>
+                                        <input type="number" value="5" class="w-20 p-2 border rounded-md">
+                                        <span class="text-sm">Creativity:</span>
+                                        <input type="number" value="10" class="w-20 p-2 border rounded-md">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Copied Text Penalty</label>
+                                    <input type="number" value="-5" class="w-20 p-2 border rounded-md mt-2">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Total Score Max Value</label>
+                                    <input type="number" value="100" class="w-20 p-2 border rounded-md mt-2">
+                                </div>
+                            </div>
+                            <button class="mt-6 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold">Save Scoring Rules</button>
+                        </section>
+
+                        <section id="pacing" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">Student Interaction & Pacing</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Fallout: Max Failed Attempts</label>
+                                    <input type="number" value="2" class="w-20 p-2 border rounded-md mt-2">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Fallout: Idle Timeout (seconds)</label>
+                                    <input type="number" value="120" class="w-20 p-2 border rounded-md mt-2">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Hot Streak: Required Answers</label>
+                                    <input type="number" value="3" class="w-20 p-2 border rounded-md mt-2">
+                                </div>
+                            </div>
+                            <button class="mt-6 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold">Save Pacing Rules</button>
+                        </section>
+                        
+                        <section id="safety" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">Content & Safety Guardrails</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Health & Safety Alert Keywords</label>
+                                    <textarea class="w-full p-2 border rounded-md mt-2" rows="3">suicide, self-harm, bullying...</textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Designated Support Team (Email)</label>
+                                    <input type="email" value="support-team@district.edu" class="w-full p-2 border rounded-md mt-2">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Restricted Content Redirect Message</label>
+                                    <textarea class="w-full p-2 border rounded-md mt-2" rows="2">I'm sorry, that is off topic. Let's get back to the lesson.</textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Idle Check-in Message</label>
+                                    <textarea class="w-full p-2 border rounded-md mt-2" rows="2">Are you still there? Need any help?</textarea>
+                                </div>
+                            </div>
+                            <button class="mt-6 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold">Save Safety Rules</button>
+                        </section>
+
+                        <section id="kb" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">Knowledge Base (KB) Management</h2>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700">Upload New Lesson File (.txt, .pdf)</label>
+                                <input type="file" class="mt-2">
+                            </div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Active Lesson Files</h3>
+                            <ul class="divide-y divide-gray-200">
+                                <li class="py-2 flex justify-between items-center">
+                                    <span>Lesson_AILiteracy.txt</span>
+                                    <button class="text-sm text-red-600 hover:underline">Archive</button>
+                                </li>
+                                <li class="py-2 flex justify-between items-center">
+                                    <span>Lesson_Photosynthesis.pdf</span>
+                                    <button class="text-sm text-red-600 hover:underline">Archive</button>
+                                </li>
+                            </ul>
+                        </section>
+                        
+                        <section id="governance" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">Data Governance</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Configurable Data Retention</h3>
+                                    <label class="block text-sm font-medium text-gray-700 mt-2">Purge student transcripts after (days):</label>
+                                    <input type="number" value="180" class="w-24 p-2 border rounded-md mt-1">
+                                    <button class="mt-2 ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm">Save Policy</button>
+                                </div>
+                                 <div>
+                                    <h3 class="font-semibold text-gray-800">Right to be Forgotten</h3>
+                                    <label class="block text-sm font-medium text-gray-700 mt-2">Enter Student ID to delete:</label>
+                                    <input type="text" placeholder="S00019" class="w-full p-2 border rounded-md mt-1">
+                                    <button class="mt-2 bg-red-600 text-white px-4 py-2 rounded-lg font-semibold text-sm">Delete All Data for User</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="logs" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-900">Log Viewer</h2>
+                                <button class="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">Export as CSV</button>
+                            </div>
+
+                            <div class="overflow-x-auto border rounded-lg">
+                                <table class="min-w-full text-sm divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="p-3 text-left font-medium text-gray-600">Timestamp</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">User ID</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Action Type</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Target Data ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-3 whitespace-nowrap">2025-11-10 09:01:15</td>
+                                            <td class="p-3 whitespace-nowrap">Parent_Paula</td>
+                                            <td class="p-3 whitespace-nowrap">View_Student_Report</td>
+                                            <td class="p-3 whitespace-nowrap">Student_Alex_7B</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 whitespace-nowrap">2025-11-10 09:00:52</td>
+                                            <td class="p-3 whitespace-nowrap">Teacher_Tom</td>
+                                            <td class="p-3 whitespace-nowrap">Update_Score</td>
+                                            <td class="p-3 whitespace-nowrap">Response_ID_98A4B</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section id="access" class="bg-white p-6 rounded-lg shadow mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-900">Role-Based Access Controls (RBAC)</h2>
+                                <button class="text-sm bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700">
+                                    Import CSV
+                                </button>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="student_search" class="block text-sm font-medium text-gray-700">Filter by Student ID or Name:</label>
+                                <input type="text" id="student_search" placeholder="e.g., S00019 or 'Alex'" class="w-full md:w-1/2 p-2 border rounded-md mt-1">
+                            </div>
+
+                            <div class="overflow-x-auto border rounded-lg">
+                                <table class="min-w-full text-sm divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="p-3 text-left font-medium text-gray-600">Student ID</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Student Name</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Linked Parent ID</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Assigned Teacher ID</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Admin Access</th>
+                                            <th class="p-3 text-left font-medium text-gray-600">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-3 whitespace-nowrap">Alex_7B (S00001)</td>
+                                            <td class="p-3 whitespace-nowrap">Alex P.</td>
+                                            <td class="p-3 whitespace-nowrap">Parent_Paula</td>
+                                            <td class="p-3 whitespace-nowrap">Teacher_Tom</td>
+                                            <td class="p-3 whitespace-nowrap">Admin_Anna</td>
+                                            <td class="p-3 whitespace-nowrap"><a href="#" class="text-blue-600 hover:underline">Edit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 whitespace-nowrap">S00019</td>
+                                            <td class="p-3 whitespace-nowrap">Maya R.</td>
+                                            <td class="p-3 whitespace-nowrap">Parent_Maya_R</td>
+                                            <td class="p-3 whitespace-nowrap">Teacher_Tom</td>
+                                            <td class="p-3 whitespace-nowrap">Admin_Anna</td>
+                                            <td class="p-3 whitespace-nowrap"><a href="#" class="text-blue-600 hover:underline">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('aside nav a');
+            
+            // Simple click-based active state
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Remove from all
+                    navLinks.forEach(l => {
+                        l.classList.remove('font-semibold', 'text-blue-600');
+                        l.classList.add('font-medium', 'text-gray-600');
+                    });
+                    // Add to clicked one
+                    link.classList.add('font-semibold', 'text-blue-600');
+                    link.classList.remove('font-medium', 'text-gray-600');
+                });
+            });
+        });
+    </SCripT>
+
+</body>
+</html>
