@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UPDATED TITLE -->
+    <meta charset="UTF-Available" content="width=device-width, initial-scale=1.0">
     <title>Pete Trujillo - AI Governance & Risk Strategist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -104,6 +102,112 @@ p { margin-bottom: 1em; }
     color: #1e40af; /* blue-800 */
 }
 
+/* === STYLES FOR GOALS PAGE === */
+.story-arc p {
+    font-size: 1.125rem; /* 18px, text-lg */
+    color: #334155; /* slate-700 */
+    padding-bottom: 1.5rem; /* pb-6 */
+    margin-bottom: 1.5rem; /* mb-6 */
+    border-bottom: 1px solid #e2e8f0; /* border-slate-200 */
+}
+.story-arc:last-of-type p {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.lifecycle-card {
+    background-color: white;
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: 1px solid #e2e8f0; /* border-slate-200 */
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow-sm */
+    border-left-width: 4px;
+}
+.lifecycle-card.lifecycle-quantify { border-left-color: #2563eb; /* blue-600 */ }
+.lifecycle-card.lifecycle-design { border-left-color: #16a34a; /* green-600 */ }
+.lifecycle-card.lifecycle-govern { border-left-color: #f97316; /* orange-600 */ }
+
+/* Project link on Goals page */
+.project-link {
+    color: #2563eb; /* blue-600 */
+    font-weight: 500; /* medium */
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.project-link:hover {
+    text-decoration: underline;
+    color: #1d4ed8; /* blue-700 */
+}
+
+/* === STYLES FOR SKILLS TABLE === */
+.skill-col {
+    padding: 1rem 1.5rem; /* p-4 px-6 */
+    vertical-align: top;
+    font-size: 0.875rem; /* 14px */
+    color: #334155; /* slate-700 */
+    /* On mobile, make them stack */
+    display: block;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .skill-col {
+        display: table-cell;
+        width: auto; /* <-- ADD THIS LINE */
+    }
+}
+.skill-col ul {
+    margin-top: 0.5rem; /* my-2 */
+}
+.skill-header {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600; /* semibold */
+    color: #1e293b; /* slate-800 */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+}
+.skill-item li {
+    position: relative;
+    padding-left: 1.25rem; /* pl-5 */
+    margin-bottom: 0.75rem; /* space-y-3 */
+}
+.skill-item li::before {
+    content: '•';
+    position: absolute;
+    left: 0.25rem;
+    top: 0;
+    color: #94a3b8; /* slate-400 */
+    font-size: 0.875rem;
+}
+
+/* === NEW Badge System Styles (v2) === */
+.badge {
+    display: inline-block;
+    font-size: 0.75rem; /* 12px */
+    font-weight: 500;
+    line-height: 1.25;
+    padding: 0.125rem 0.375rem; /* 2px 6px */
+    border-radius: 0.25rem; /* 4px */
+    margin-left: 4px;
+    margin-top: 4px; /* Added for better wrapping */
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+}
+/* Project Evidence Badge (as a link) */
+.badge-proj {
+    background-color: #dbeafe; /* blue-100 */
+    color: #1e40af; /* blue-800 */
+    text-decoration: none;
+}
+.badge-proj:hover {
+    background-color: #bfdbfe; /* blue-200 */
+    text-decoration: underline;
+}
+/* Work Experience Badge (as text) */
+.badge-work {
+    background-color: #e2e8f0; /* slate-200 */
+    color: #334155; /* slate-700 */
+}
+
     </style>
 </head>
 <body class="antialiased">
@@ -116,6 +220,7 @@ p { margin-bottom: 1em; }
 
             <div class="hidden md:flex space-x-6">
                 <a href="#about" class="nav-link nav-active" data-page="about">About</a>
+                <a href="#goals" class="nav-link" data-page="goals">Career Goals</a>
                 <a href="#projects" class="nav-link" data-page="projects">Projects</a>
                 <a href="#expertise" class="nav-link" data-page="expertise">Expertise</a>
                 <a href="#contact" class="nav-link" data-page="contact">Contact</a>
@@ -128,18 +233,18 @@ p { margin-bottom: 1em; }
 
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <a href="#about" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="about">About</a>
+            <a href="#goals" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="goals">Career Goals</a>
             <a href="#projects" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="projects">Projects</a>
             <a href="#expertise" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="expertise">Expertise</a>
             <a href="#contact" class="block py-3 px-6 text-slate-700 hover:bg-slate-50 nav-link-mobile" data-page="contact">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-20">
+    <main class="container mx-auto px-6">
 
-        <section id="about" class="page-section">
+        <section id="about" class="page-section py-12 md:py-20">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="flex-1">
-                    <!-- UPDATED HEADLINE -->
                     <span class="text-blue-600 font-semibold">AI STRATEGIST | AI GOVERNANCE | TRUST & RISK</span>
                     <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6 leading-tight">
                         Pete Trujillo
@@ -151,7 +256,6 @@ p { margin-bottom: 1em; }
                         With 15+ years of experience at firms like <span class="font-bold">Microsoft</span>, <span class="font-bold">Nuance</span>, and <span class="font-bold">J.D. Power</span>, I translate complex AI concepts into measurable business value. I am currently deepening my expertise with a <span class="font-bold">M.S. in AI: Management & Policy from Purdue University</span> (Dec 2025).
                     </p>
                     
-                    <!-- NEW: ADVISORY APPROACH -->
                     <div class="my-8">
                         <h3 class="text-xl font-semibold text-slate-800 mb-4">My Advisory Approach</h3>
                         <div class="grid sm:grid-cols-3 gap-6">
@@ -188,14 +292,111 @@ p { margin-bottom: 1em; }
             </div>
         </section>
 
-<!-- ====== PROJECTS SECTION ====== -->
-<section id="projects" class="page-section hidden">
+        <section id="goals" class="page-section hidden goals-page bg-slate-100 -mx-6 px-6 py-16 md:py-24">
+            
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-10 leading-tight">
+                    Career Pivot: From Consumer Protection to Trusted AI Advisor
+                </h2>
+
+                <div class="story-arc mb-8">
+                    <p><strong>I started in consumer rights.</strong> At the LA County Department of Consumer and Business Affairs (DCBA), I redesigned complaint intake to protect vulnerable citizens. At J.D. Power, I turned Voice of Customer into actionable insights. My undergrad in Family &amp; Consumer Sciences drilled in privacy law and ethical business.</p>
+                </div>
+
+                <div class="story-arc mb-8">
+                    <p><strong>Then I saw AI’s double edge.</strong> At Microsoft/Nuance, I optimized AI bots that replaced human jobs — and witnessed the risks: hallucinations, bias, data leaks. I realized: <em>technology has no morals. We need experts to govern it.</em></p>
+                </div>
+
+                <div class="pivot-statement bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-12 border-l-4 border-blue-500">
+                    <p class="font-semibold text-lg text-slate-800">Today, I pivot to <strong>Principal AI Governance Strategist (IC)</strong>.</p>
+                    <p class="text-slate-700">I lead through expertise — quantifying risk, designing solutions, and building NIST-aligned governance that scales trust.</p>
+                    <p class="mt-3 text-sm font-medium text-indigo-700">
+                        <i data-lucide="graduation-cap" class="inline w-5 h-5 mr-1"></i>
+                        <strong>Completed:</strong> Master of Science in AI Management and Policy – Purdue University (2025)
+                    </p>
+                </div>
+
+                <div class="lifecycle mt-12">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-800">My Projects = The Trusted AI Advisor Lifecycle</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+
+                        <div class="lifecycle-card lifecycle-quantify">
+                            <strong class="block text-xl mb-1 font-semibold text-slate-800">Quantify</strong>
+                            <p class="text-slate-600">Financialize risk with analytics &amp; VoC</p>
+                            <em class="text-sm text-slate-500 mt-2 block">
+                                See:
+                                <a href="#projects" data-project="pegasus" class="project-link">Project Pegasus</a>,
+                                <a href="#projects" data-project="energy" class="project-link">CA AI Energy Problem</a>
+                            </em>
+                        </div>
+
+                        <div class="lifecycle-card lifecycle-design">
+                            <strong class="block text-xl mb-1 font-semibold text-slate-800">Design</strong>
+                            <p class="text-slate-600">Architect secure, user-centric AI systems</p>
+                            <em class="text-sm text-slate-500 mt-2 block">
+                                See:
+                                <a href="#projects" data-project="fitassist" class="project-link">FitAssist AI Trainer</a>,
+                                <a href="#projects" data-project="cruise" class="project-link">Cruise Memorable Moments</a>
+                            </em>
+                        </div>
+
+                        <div class="lifecycle-card lifecycle-govern">
+                            <strong class="block text-xl mb-1 font-semibold text-slate-800">Govern</strong>
+                            <p class="text-slate-600">Deploy with NIST/ISO impact assessments</p>
+                            <em class="text-sm text-slate-500 mt-2 block">
+                                See:
+                                <a href="#projects" data-project="inworld" class="project-link">InWorld AI Impact</a>,
+                                <a href="#projects" data-project="wildfire" class="project-link">CA Wildfire AI Policy</a>
+                            </em>
+                        </div>
+
+                    </div>
+                    <p class="mt-6 text-slate-600"><em>Select any project in the "Projects" tab to explore the full lifecycle in action.</em></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mt-12">
+                    <div class="energizes-section bg-green-50 p-6 rounded-lg border border-green-200">
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-green-900">
+                            <i data-lucide="zap" class="w-6 h-6 mr-2 text-green-700"></i>
+                            What Energizes Me
+                        </h3>
+                        <ul class="list-disc pl-6 space-y-2 text-green-800">
+                            <li>Leading as senior individual contributor through expertise</li>
+                            <li>Internal trusted advisor on AI strategy, risk, and future planning</li>
+                            <li>Ethical advocate and flagging risks early</li>
+                            <li>Using analytics and Voice of Customer (VoC) data to defend, redirect, or validate high-stakes strategic projects</li>
+                            <li>Solving complex puzzles—detective-style root-cause fixes</li>
+                            <li>Lifelong learning (self-taught coding, tools, domains)</li>
+                        </ul>
+                    </div>
+
+                    <div class="avoids-section bg-orange-50 p-6 rounded-lg border border-orange-200">
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-orange-900">
+                            <i data-lucide="alert-circle" class="w-6 h-6 mr-2 text-orange-700"></i>
+                            What I’m Not Looking For
+                        </h3>
+                        <ul class="list-disc pl-6 space-y-2 text-orange-800">
+                            <li>Formal people management</li>
+                            <li>“Reporting guy” or low-value dashboards</li>
+                            <li>Overly Sales cultures vs. Solution Focused</li>
+                            <li>Big-Tech employers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="assets/resume_pete_trujillo_ai_strategist.pdf" download="resume_pete_trujillo_ai_strategist.pdf" class="inline-block mt-10 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 cta-button transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <i data-lucide="download" class="inline w-5 h-5 mr-2"></i>
+                    Download My Resume (PDF)
+                </a>
+            </div>
+
+        </section>
+
+<section id="projects" class="page-section hidden py-12 md:py-20">
     <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">Strategic AI Projects</h2>
 
-        <!-- Project Sidebar -->
         <div class="grid md:grid-cols-5 gap-8">
-            <!-- Sidebar -->
             <div class="md:col-span-2">
                 <div class="project-list-wrapper">
                     <a href="#" class="project-nav-link flex flex-col" data-project="start">
@@ -203,7 +404,6 @@ p { margin-bottom: 1em; }
                         <span class="text-xs text-slate-500">Explore my strategic AI work</span>
                     </a>
 
-                    <!-- 1. CAPSTONE -->
                     <a href="#" class="project-nav-link" data-project="capstone">
                         <span class="project-title">AI Governance & XAI Scoring (Capstone)</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -215,7 +415,6 @@ p { margin-bottom: 1em; }
                         </div>
                     </a>
 
-					<!-- 2 INWORLD -->
 					<a href="#" class="project-nav-link" data-project="inworld">
 					    <span class="project-title">InWorld GenAI Impact Assessment</span>
 					    <div class="flex flex-wrap gap-1 mt-1">
@@ -226,7 +425,6 @@ p { margin-bottom: 1em; }
 					    </div>
 					</a>
 
-                    <!-- 3. MONARQUE (UPDATED) -->
                     <a href="#" class="project-nav-link" data-project="monarch">
                         <span class="project-title">Monarque Solutions (Full-Stack)</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -237,7 +435,6 @@ p { margin-bottom: 1em; }
                         </div>
                     </a>
 
-                    <!-- 4. ENERGY -->
                     <a href="#" class="project-nav-link" data-project="energy">
                         <span class="project-title">AI Energy Consumption Policy Brief</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -247,7 +444,6 @@ p { margin-bottom: 1em; }
                         </div>
                     </a>
 
-                    <!-- 5. WILDFIRE -->
                     <a href="#" class="project-nav-link" data-project="wildfire">
                         <span class="project-title">AI Wildfire Risk Policy Brief</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -256,8 +452,7 @@ p { margin-bottom: 1em; }
                             <span class="project-tag">NIST RMF</span>
                         </div>
                     </a>
-						<!-- 6. fitassist -->				
-					<a href="#" class="project-nav-link" data-project="fitassist">
+						<a href="#" class="project-nav-link" data-project="fitassist">
 						<span class="project-title">FitAssist AI Trainer Agent</span>
 						<div class="flex flex-wrap gap-1 mt-1">
 							<span class="project-tag">AI Ethics</span>
@@ -266,7 +461,6 @@ p { margin-bottom: 1em; }
 							<span class="project-tag">HIPAA</span>
 						</div>
 					</a>
-                    <!-- 7. PEGASUS -->
                     <a href="#" class="project-nav-link" data-project="pegasus">
                         <span class="project-title">Pegasus Framework</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -276,8 +470,7 @@ p { margin-bottom: 1em; }
                             <span class="project-tag">Process Standardization</span>
                         </div>
                     </a>
-					                    <!-- 8. CRUISE -->
-                    <a href="#" class="project-nav-link" data-project="cruise">
+					                    <a href="#" class="project-nav-link" data-project="cruise">
                         <span class="project-title">Memorable Moments AI</span>
                         <div class="flex flex-wrap gap-1 mt-1">
                             <span class="project-tag">AI Product Strategy</span>
@@ -285,8 +478,7 @@ p { margin-bottom: 1em; }
                             <span class="project-tag">Guest Experience</span>
                         </div>
                     </a>
-					                    <!-- 9. INVISION -->
-                    <a href="#" class="project-nav-link" data-project="invision">
+					                    <a href="#" class="project-nav-link" data-project="invision">
                         <span class="project-title">InVision VR EdTech Plan</span>
                         <div class="flex flex-wrap gap-1 mt-1">
                             <span class="project-tag">Business Strategy</span>
@@ -294,7 +486,6 @@ p { margin-bottom: 1em; }
                             <span class="project-tag">EdTech</span>
                         </div>
                     </a>
-                    <!-- 10. PRO BONO -->
                     <a href="#" class="project-nav-link" data-project="probono">
                         <span class="project-title">Pro Bono: AI Ethics for Non-Profits</span>
                         <div class="flex flex-wrap gap-1 mt-1">
@@ -306,14 +497,11 @@ p { margin-bottom: 1em; }
                 </div>
             </div>
 
-            <!-- Detail Pane -->
             <div class="md:col-span-3 space-y-12">
 
-                <!-- START STATE (REPLACED) -->
                 <div id="project-start" class="project-detail">
                     <div class="bg-white p-8 rounded-lg shadow-md border border-slate-200">
                         
-                        <!-- ADDED FLEX CONTAINER AND ICON -->
                         <div class="flex items-center gap-3 mb-2">
                             <i data-lucide="sparkles" class="w-8 h-8 text-blue-600 flex-shrink-0"></i>
                             <h3 class="text-2xl font-semibold text-slate-800">A Lifecycle Approach to AI Strategy</h3>
@@ -324,7 +512,6 @@ p { margin-bottom: 1em; }
                         </p>
                         
                         <div class="space-y-6">
-                            <!-- 1. Quantify Risk -->
                             <div class="flex items-start gap-4">
                                 <div class="flex-shrink-0">
                                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
@@ -339,25 +526,20 @@ p { margin-bottom: 1em; }
                                 </div>
                             </div>
 
-                           <!-- 2. Architect the Solution (UPDATED) -->
-                            <div class="flex items-start gap-4">
+                           <div class="flex items-start gap-4">
                                 <div class="flex-shrink-0">
                                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
-                                        <!-- UPDATED ICON -->
                                         <i data-lucide="cpu" class="w-5 h-5"></i>
                                     </span>
                                 </div>
                                 <div>
-                                    <!-- UPDATED TITLE -->
                                     <h4 class="font-semibold text-slate-800">Design</h4>
-                                    <!-- UPDATED COPY -->
                                     <p class="text-sm text-slate-600">I apply deep product management and software experience to <strong>architect the technical solution</strong>, creating the PRD, data flow, and system design for a secure, user-centric application.
                                         <br><em><strong class="text-slate-700">See:</strong> AI Voice Coach (Full App), AI (Capstone)</em>
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- 3. Govern the Deployment -->
                             <div class="flex items-start gap-4">
                                 <div class="flex-shrink-0">
                                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
@@ -377,7 +559,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 1. CAPSTONE -->
                 <div id="project-capstone" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Governance & XAI Scoring (Capstone)</h3>
                     <p class="text-slate-600 mb-6">
@@ -416,7 +597,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 2. PEGASUS -->
                 <div id="project-pegasus" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pegasus Framework</h3>
                     <p class="text-slate-600 mb-6">
@@ -448,7 +628,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 3. CRUISE -->
                 <div id="project-cruise" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">Memorable Moments AI</h3>
                     <p class="text-slate-600 mb-6">
@@ -478,7 +657,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 4. INVISION -->
                 <div id="project-invision" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">InVision VR EdTech Plan</h3>
                     <p class="text-slate-600 mb-6">
@@ -510,7 +688,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
                 
-                <!-- 5. MONARQUE (UPDATED) -->
                 <div id="project-monarch" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">Monarque Solutions (Full-Stack)</h3>
                     <p class="text-slate-600 mb-6">
@@ -536,7 +713,7 @@ p { margin-bottom: 1em; }
                         <a href="https://peppy-belekoy-75b429.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
                             <i data-lucide="external-link" class="w-4 h-4"></i> Live ROI Calculator Demo
                         </a>
-                        <a href="https://aivoicecoachcaregiver.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
+                        <a href="httpsaivoicecoachcaregiver.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
                             <i data-lucide="external-link" class="w-4 h-4"></i> Live AI Coach Demo
                         </a>
                         <a href="" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
@@ -552,7 +729,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 6. ENERGY -->
                 <div id="project-energy" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Energy Consumption Policy Brief</h3>
                     <p class="text-slate-600 mb-6">
@@ -581,7 +757,6 @@ p { margin-bottom: 1em; }
                     </div>
                 </div>
 
-                <!-- 7. WILDFIRE -->
                 <div id="project-wildfire" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Wildfire Risk Policy Brief</h3>
                     <p class="text-slate-600 mb-6">
@@ -609,7 +784,6 @@ p { margin-bottom: 1em; }
                         <p class="text-sm text-orange-900"><strong>Outcome:</strong> New framework proposed enhancing AI-driven prevention and response.</p>
                     </div>
                 </div>
-				<!-- INWORLD -->
 				<div id="project-inworld" class="project-detail hidden">
 				    <h3 class="text-2xl font-semibold text-slate-800 mb-2">InWorld GenAI Impact Assessment</h3>
 				    <p class="text-slate-600 mb-6">
@@ -640,7 +814,6 @@ p { margin-bottom: 1em; }
 				        <p class="text-sm text-purple-900"><strong>Outcome:</strong> Actionable governance roadmap for ethical, compliant GenAI at scale.</p>
 				    </div>
 				</div>
-				<!-- FITASSIST -->
 				<div id="project-fitassist" class="project-detail hidden">
 				    <h3 class="text-2xl font-semibold text-slate-800 mb-2">FitAssist: AI Agent for Personal Trainers</h3>
 				    <p class="text-slate-600 mb-6">
@@ -665,7 +838,6 @@ p { margin-bottom: 1em; }
 				        <p class="text-sm text-green-900"><strong>Outcome:</strong> Ethical, scalable AI that frees trainers to coach — not message.</p>
 				    </div>
 				</div>
-                <!-- 8. PRO BONO -->
                 <div id="project-probono" class="project-detail hidden">
                     <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pro Bono: AI Ethics for Non-Profits</h3>
                     <p class="text-slate-600 mb-6">
@@ -691,8 +863,9 @@ p { margin-bottom: 1em; }
     </div>
 </section>
 
-       <section id="expertise" class="page-section hidden mt-16 md:mt-24">
+       <section id="expertise" class="page-section hidden bg-slate-100 -mx-6 px-6 py-16 md:py-24">
             <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Expertise & Education</h2>
+            
             <div class="text-center mb-12">
                 <a href="assets/resume_pete_trujillo_ai_strategist.pdf" download="resume_pete_trujillo_ai_strategist.pdf" class="cta-button bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center gap-2">
                     <i data-lucide="download" class="w-5 h-5"></i>
@@ -700,135 +873,216 @@ p { margin-bottom: 1em; }
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
-                
-                <div class="lg:col-span-2">
-                    
-                    <!-- MOVED EDUCATION FIRST AND RENAMED H3 -->
-                    <h3 class="text-3xl font-bold text-slate-800 mb-6">Education & Core Expertise</h3>
-                    <div class="space-y-6">
-                        
-                        <!-- NEW: CORE EXPERTISE SECTION - MOVED UP & RESTYLED -->
-                        <div class="bg-blue-50 p-6 rounded-lg shadow-md border border-blue-200">
-                            <h4 class="text-lg font-semibold text-blue-900 mb-4">Core AI Governance Expertise</h4>
-                            <p class="text-blue-800 mb-6 text-sm">My studies provided practical frameworks for responsible AI implementation, enabling me to act as an internal advisor who ensures innovation succeeds without compromising ethical principles or inviting regulatory risk.</p>
-                            <div class="space-y-4">
-                                <div>
-                                    <h5 class="font-semibold text-blue-800">1. Strategic Alignment & Ethical Governance</h5>
-                                    <p class="text-sm text-blue-800 mt-1">Expertise in comparative AI policy (NIST AI RMF, EU AI Act) and implementing governance frameworks. Skilled in conducting comprehensive cost-benefit/harm analyses prior to AI deployment and advising on high-stakes ethical challenges (e.g., mitigating sociotechnical bias in predictive algorithms).</p>
+            <div class="max-w-4xl mx-auto space-y-12">
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left" id="education-anchor">Education</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800">Master of Science, Artificial Intelligence: Management & Policy</h4>
+                                <p class="text-slate-600 mb-2">Purdue University (Expected Dec 2025)</p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-200">
+                                    <h5 class="text-sm font-semibold text-slate-700 mb-2">Key Coursework:</h5>
+                                    <ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
+                                        <li>Artificial Intelligence Policy, Governance, & Ethics</li>
+                                        <li>Societal Impacts of Artificial Intelligence</li>
+                                    </ul>
                                 </div>
-                                <div>
-                                    <h5 class="font-semibold text-blue-800">2. Accountability & Liability Policy</h5>
-                                    <p class="text-sm text-blue-800 mt-1">Focused on designing accountability mechanisms and analyzing the socio-legal trade-offs of different liability regimes (e.g., strict vs. fault-based). I translate complex regulations into tangible practices to balance innovation with consumer protection.</p>
-                                </div>
+                                <BR>
+                                 <h5 class="text-sm font-semibold text-slate-700 mb-2">Graduate Certifications:</h5>
+                                    <ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
+                                    <li>Graduate Certificate, Foundations in AI</li>
+                                    <li>Graduate Certificate, Applied Data Analytics</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800">Bachelor of Science, Consumer Affairs</h4>
+                                <p class="text-slate-600">California State University-Northridge (2010)</p>
+                                 <ul class="list-disc list-inside text-slate-500 text-sm">
+                                    <li>Minor in Marketing</li>
+                                </ul>
                             </div>
                         </div>
-
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-lg font-semibold text-slate-800">Master of Science, Artificial Intelligence: Management & Policy</h4>
-                            <!-- UPDATED DATE -->
-                            <p class="text-slate-600 mb-2">Purdue University (Expected Dec 2025)</p>
-                            <ul class="list-disc list-inside text-slate-500 text-sm">
-                                <li>Graduate Certificate, Foundations in AI</li>
-                                <li>Graduate Certificate, Applied Data Analytics</li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h4 class="text-lg font-semibold text-slate-800">Bachelor of Science, Consumer Affairs</h4>
-                            <p class="text-slate-600">California State University-Northridge (2010)</p>
-							 <ul class="list-disc list-inside text-slate-500 text-sm">
-                                <li>Minor in Marketing</li>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Certifications</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                    <span class="text-slate-700">AIGP (AIPP) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                    <span class="text-slate-700">COBIT 2019 Foundation (ISACA) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                    <span class="text-slate-700">Product School - Advanced AI Agents</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                    <span class="text-slate-700">Product School - AI for Product (AIPC)</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                    <span class="text-slate-700">Certified SAFe 6 POPM</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
-
-                    <h3 class="text-3xl font-bold text-slate-800 mb-6 mt-10">Work Experience</h3>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Work Experience</h3>
                     
-                    <!-- NEW: BRIDGE PARAGRAPH - UPDATED STYLING -->
                     <p class="text-blue-900 mb-6 italic bg-blue-50 p-4 rounded-md border border-blue-200">
                         My 15+ years in product management and AI analytics provide a practical foundation for my work in governance. I have seen firsthand where AI deployment succeeds and fails. This inspired me to take a dedicated leave to pursue my M.S. in AI Policy, formalizing my experience to bridge the critical gap between high-level policy and real-world product execution.
                     </p>
 
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
                             <span class="text-sm font-medium text-slate-500">2022 - 2024</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Manager, AI & Analytics Solutions</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Microsoft (Remote)</h5>
-                            <!-- UPDATED JOB DESCRIPTION -->
                             <p class="text-slate-600 text-base">
                                 Pioneered AI Product Strategy and Ethical Governance for B2B analytics solutions, supporting over $100M+ in annual revenue by translating emerging technology trends (AI, data feeds, Copilot) into a quantifiable product roadmap. Shaped Microsoft’s AI-first approach for conversational platforms.
                             </p>
                         </div>
                         
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
                             <span class="text-sm font-medium text-slate-500">2017 - 2022</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Owner, Insights & Analytics</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Nuance Communications (Agoura Hills, CA)</h5>
-                            <!-- UPDATED JOB DESCRIPTION -->
                             <p class="text-slate-600 text-base">
                                 Drove AI product strategy for conversational platforms, aligning technology initiatives (AI bots, fraud detection, Human in the Loop) with business objectives to deliver measurable client performance and operational efficiency gains. Led the beta and GTM strategy for a human-in-the-loop (HITL) AI solution, reducing escalations by 9%.
                             </p>
                         </div>
 
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
                             <span class="text-sm font-medium text-slate-500">2010 - 2017</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Manager, Consumer Research</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">J.D. Power (Westlake Village, CA)</h5>
-                            <!-- UPDATED JOB DESCRIPTION -->
                             <p class="text-slate-600 text-base">
                                 Shaped C-suite decision-making at Fortune 100 clients by developing thought leadership and strategic recommendations based on complex market research and emerging technology trends. Pioneered biometric research using facial recognition and eye tracking to deepen consumer insights.
                             </p>
                         </div>
 
-						<div class="bg-white p-6 rounded-lg shadow-md">
+						<div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
                             <span class="text-sm font-medium text-slate-500">2006 - 2009</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Business Operations Analyst</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Chase (Chatsworth, CA)</h5>
-                            <!-- UPDATED JOB DESCRIPTION -->
                             <p class="text-slate-600 text-base">
                                 Designed BI reporting and automation solutions to improve efficiency and compliance. Leveraged complaint data analysis to identify and address a critical regulatory issue, measurably reducing complaint volumes and legal exposure.
                             </p>
                         </div>
                     </div>
                 </div>
-
+                
                 <div>
-                    <h3 class="text-3xl font-bold text-slate-800 mb-6">Certifications</h3>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <ul class="space-y-3">
-                            <!-- UPDATED/PRUNED CERTS LIST -->
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                <span class="text-slate-700">AIGP (AIPP) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                <span class="text-slate-700">COBIT 2019 Foundation (ISACA) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
-                            </li>
-                            <!-- NEW CERT -->
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                <span class="text-slate-700">Product School - BR>Advanced AI Agents<span class="text-sm text-slate-500"></span></span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                <span class="text-slate-700">Product School - AI for Product (AIPC)</span>
-                            </li>
-                            <!-- ADDED BACK SAFE CERT -->
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                <span class="text-slate-700">Certified SAFe 6 POPM</span>
-                            </li>
-
-                        </ul>
+                     <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Core Skills</h3>
+                    <div class="bg-white rounded-lg shadow-md border border-slate-200 overflow-hidden">
+                        <table class="min-w-full divide-y divide-slate-200 table-fixed">
+                            <thead class="bg-slate-50">
+                                <tr class="hidden md:table-row">
+                                    <th class="skill-header text-left" style="width: 25%;">
+                                        <span class="flex items-center">
+                                            <i data-lucide="shield" class="w-5 h-5 mr-2 text-purple-600"></i>
+                                            Governance &amp; Risk
+                                        </span>
+                                    </th>
+                                    <th class="skill-header text-left" style="width: 25%;">
+                                        <span class="flex items-center">
+                                            <i data-lucide="globe" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                            Strategy &amp; Policy
+                                        </span>
+                                    </th>
+                                    <th class="skill-header text-left" style="width: 25%;">
+                                        <span class="flex items-center">
+                                            <i data-lucide="cpu" class="w-5 h-5 mr-2 text-green-600"></i>
+                                            Product &amp; Design
+                                        </span>
+                                    </th>
+                                    <th class="skill-header text-left" style="width: 25%;">
+                                        <span class="flex items-center">
+                                            <i data-lucide="bar-chart-3" class="w-5 h-5 mr-2 text-orange-600"></i>
+                                            Analytics &amp; Impact
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="block md:table-row">
+                                    <td class="skill-col">
+                                        <h4 class="skill-header md:hidden flex items-center mb-2">
+                                             <i data-lucide="shield" class="w-5 h-5 mr-2 text-purple-600"></i>
+                                            Governance &amp; Risk
+                                        </h4>
+                                        <ul class="skill-item">
+                                            <li>NIST AI RMF <a href="#projects" data-project="wildfire" class="badge badge-proj project-link">Wildfire</a><a href="#projects" data-project="inworld" class="badge badge-proj project-link">InWorld</a></li>
+                                            <li>Ethical AI & Risk ID <span class="badge badge-work">Microsoft</span><a href="#projects" data-project="fitassist" class="badge badge-proj project-link">FitAssist</a><a href="#projects" data-project="wildfire" class="badge badge-proj project-link">Wildfire</a></li>
+                                            <li>Data Governance (HIPAA) <a href="#projects" data-project="fitassist" class="badge badge-proj project-link">FitAssist</a></li>
+                                            <li>Regulatory & Compliance <span class="badge badge-work">Microsoft</span><span class="badge badge-work">Chase</span><a href="#projects" data-project="inworld" class="badge badge-proj project-link">InWorld</a><a href="#projects" data-project="energy" class="badge badge-proj project-link">Energy</a></li>
+                                            <li>Stakeholder Identification <a href="#projects" data-project="inworld" class="badge badge-proj project-link">InWorld</a><a href="#projects" data-project="wildfire" class="badge badge-proj project-link">Wildfire</a></li>
+                                        </ul>
+                                    </td>
+    
+                                    <td class="skill-col">
+                                        <h4 class="skill-header md:hidden flex items-center mb-2">
+                                             <i data-lucide="globe" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                            Strategy &amp; Policy
+                                        </h4>
+                                        <ul class="skill-item">
+                                            <li>Enterprise AI Strategy <span class="badge badge-work">Microsoft</span><span class="badge badge-work">Nuance</span></li>
+                                            <li>Policy Framework Design <a href="#projects" data-project="energy" class="badge badge-proj project-link">Energy</a><a href="#projects" data-project="wildfire" class="badge badge-proj project-link">Wildfire</a></li>
+                                            <li>Market Research Synthesis <span class="badge badge-work">J.D. Power</span><a href="#projects" data-project="cruise" class="badge badge-proj project-link">Cruise</a><a href="#projects" data-project="invision" class="badge badge-proj project-link">InVision</a></li>
+                                            <li>Go-to-Market (GTM) Strategy <span class="badge badge-work">Nuance</span><a href="#projects" data-project="invision" class="badge badge-proj project-link">InVision</a></li>
+                                            <li>Thought Leadership <span class="badge badge-work">J.D. Power</span><span class="badge badge-work">Microsoft</span></li>
+                                        </ul>
+                                    </td>
+    
+                                    <td class="skill-col">
+                                        <h4 class="skill-header md:hidden flex items-center mb-2">
+                                             <i data-lucide="cpu" class="w-5 h-5 mr-2 text-green-600"></i>
+                                            Product &amp; Design
+                                        </h4>
+                                        <ul class="skill-item">
+                                            <li>AI Product Lifecycle Mgmt <span class="badge badge-work">Microsoft</span><span class="badge badge-work">Nuance</span></li>
+                                            <li>System Architecture (LLM/RAG) <a href="#projects" data-project="fitassist" class="badge badge-proj project-link">FitAssist</a><a href="#education-anchor" class="badge badge-proj">Purdue</a><a href="#projects" data-project="cruise" class="badge badge-proj project-link">Cruise</a></li>
+                                            <li>Business Case Development <span class="badge badge-work">Microsoft</span><span class="badge badge-work">J.D. Power</span></li>
+                                            <li>Human-in-the-Loop (HITL) <span class="badge badge-work">Nuance</span><a href="#projects" data-project="fitassist" class="badge badge-proj project-link">FitAssist</a></li>
+                                            <li>Emerging Tech Research <span class="badge badge-work">J.D. Power</span><span class="badge badge-work">Microsoft</span><a href="#education-anchor" class="badge badge-proj">Purdue</a></li>
+                                        </ul>
+                                    </td>
+    
+                                    <td class="skill-col">
+                                        <h4 class="skill-header md:hidden flex items-center mb-2">
+                                            <i data-lucide="bar-chart-3" class="w-5 h-5 mr-2 text-orange-600"></i>
+                                            Analytics &amp; Impact
+                                        </h4>
+                                        <ul class="skill-item">
+                                            <li>ROI & Value Assessment <span class="badge badge-work">Nuance</span><a href="#projects" data-project="pegasus" class="badge badge-proj project-link">Pegasus</a></li>
+                                            <li>Root-Cause Analytics <span class="badge badge-work">Nuance</span></li>
+                                            <li>Financial Modeling <a href="#projects" data-project="invision" class="badge badge-proj project-link">InVision</a><span class="badge badge-work">J.D. Power</span></li>
+                                            <li>Data Strategy & Automation <span class="badge badge-work">Nuance</span><span class="badge badge-work">Chase</span></li>
+                                            <li>BI & Dashboard Solutions <span class="badge badge-work">Nuance</span><span class="badge badge-work">Chase</span></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+
+
             </div>
 
         </section>
 
-        <section id="contact" class="page-section hidden mt-16 md:mt-24">
+        <section id="contact" class="page-section hidden py-12 md:py-20">
             <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Let's Connect</h2>
             <p class="text-lg text-slate-600 text-center max-w-xl mx-auto mb-12">
                 I'm always interested in discussing AI policy, product strategy, or new project ideas.
@@ -841,7 +1095,6 @@ p { margin-bottom: 1em; }
                      class="rounded-full w-24 h-24 border-4 border-white -mt-20 mb-4 shadow-lg object-cover">
                 
                 <h3 class="text-2xl font-semibold text-slate-800">Pete Trujillo</h3>
-                <!-- UPDATED SUBTITLE -->
                 <p class="text-slate-500 mb-6">AI Governance & Risk Strategist</p>
                 
                 <div class="flex flex-col gap-4 w-full">
@@ -849,7 +1102,7 @@ p { margin-bottom: 1em; }
                         <i data-lucide="mail" class="w-5 h-5"></i>
                         pete.tru@gmail.com
                     </a>
-                    <a href="https://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                    <a href="httpsa://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
                         <i data-lucide="linkedin" class="w-5 h-5"></i>
                         Connect on LinkedIn
                     </a>
@@ -863,10 +1116,10 @@ p { margin-bottom: 1em; }
         <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p class="text-sm">&copy; 2025 Pete Trujillo. All rights reserved.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="https://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="httpsa://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                 </a>
-                <a href="https://github.com/petetrujillo/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="httpsa://github.com/petetrujillo/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="github" class="w-6 h-6"></i>
                 </a>
             </div>
@@ -916,7 +1169,8 @@ p { margin-bottom: 1em; }
             const pageSections = document.querySelectorAll('.page-section');
             const desktopNavLinks = document.querySelectorAll('.nav-link');
             
-            function showPage(pageId) {
+            // Make showPage globally accessible or defined before it's used
+            window.showPage = function(pageId) {
                 // Hide all sections
                 pageSections.forEach(section => {
                     section.classList.add('hidden');
@@ -953,7 +1207,7 @@ p { margin-bottom: 1em; }
                     // Only prevent default if it's NOT a project sub-link
                     if (!link.classList.contains('project-nav-link')) {
                         e.preventDefault();
-                        showPage(pageId);
+                        window.showPage(pageId);
                         window.location.hash = pageId; // Update URL hash
                     }
                     
@@ -977,17 +1231,71 @@ p { margin-bottom: 1em; }
                 // Check if it's a main page (about, projects, etc.)
                 const targetSection = document.getElementById(currentHash);
                 if (targetSection && targetSection.classList.contains('page-section')) {
-                     showPage(currentHash);
+                     window.showPage(currentHash);
                 } else {
                     // Default to 'about' if hash is invalid
-                    showPage('about');
+                    window.showPage('about');
                 }
             } else {
-                showPage('about'); // Default page
+                window.showPage('about'); // Default page
             }
 
             // --- Show default project start page ---
             document.getElementById('project-start').classList.remove('hidden');
+
+            // --- Add click listener for project links on Goals page ---
+            document.querySelectorAll('.goals-page .project-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const projectId = link.dataset.project;
+                    
+                    // 1. Switch to the 'projects' page
+                    window.showPage('projects');
+                    window.location.hash = 'projects'; // Update hash
+                    
+                    // 2. Find the corresponding sidebar link
+                    const sidebarLink = document.querySelector(`.project-nav-link[data-project="${projectId}"]`);
+                    
+                    // 3. Show the specific project
+                    if (sidebarLink) {
+                        showProject(projectId, sidebarLink);
+                    }
+                });
+            });
+            
+             // --- Add click listener for project links on Skills Table ---
+            document.querySelectorAll('.skill-item .project-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Handle non-project links (like Purdue anchor)
+                    if (!link.dataset.project) {
+                        // It's an internal anchor link
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        return; // Stop here for anchor links
+                    }
+
+                    // Handle project links
+                    const projectId = link.dataset.project;
+                    
+                    // 1. Switch to the 'projects' page
+                    window.showPage('projects');
+                    window.location.hash = 'projects'; // Update hash
+                    
+                    // 2. Find the corresponding sidebar link
+                    const sidebarLink = document.querySelector(`.project-nav-link[data-project="${projectId}"]`);
+                    
+                    // 3. Show the specific project
+                    if (sidebarLink) {
+                        showProject(projectId, sidebarLink);
+                    }
+                });
+            });
+
         });
 		
 		document.querySelectorAll('.project-nav-link').forEach(link => {
