@@ -2,212 +2,226 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pete Trujillo - AI Governance Strategist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
         
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* Tailwind 'slate-50' */
-    color: #0f172a; /* Tailwind 'slate-900' */
-    font-size: 15px;       /* slightly smaller than default */
-    line-height: 1.6;      /* improve readability */
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind 'slate-50' */
+            color: #0f172a; /* Tailwind 'slate-900' */
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
-/* === HEADER JUMP FIX === */
-html {
-    scroll-padding-top: 80px; 
-}
+        /* === HEADER JUMP FIX === */
+        html {
+            scroll-padding-top: 80px; 
+        }
 
-/* Headings */
-h1 { font-size: 2rem; font-weight: 700; }
-h2 { font-size: 2.5rem; font-weight: 700; }
-h3 { font-size: 1.25rem; font-weight: 600; }
-p { margin-bottom: 1em; }
+        /* Headings */
+        h1 { font-size: 2rem; font-weight: 700; }
+        h2 { font-size: 2.5rem; font-weight: 700; }
+        h3 { font-size: 1.25rem; font-weight: 600; }
+        p { margin-bottom: 1em; }
 
-        
-/* Active nav link */
-.nav-active {
-    color: #2563eb; /* Tailwind 'blue-600' */
-    font-weight: 600;
-}
+        /* Active nav link */
+        .nav-active {
+            color: #2563eb; /* Tailwind 'blue-600' */
+            font-weight: 600;
+        }
 
-/* Transitions */
-.nav-link, .cta-button, .project-nav-link, .filter-btn {
-    transition: all 0.2s ease-in-out;
-}
-.nav-link:hover { color: #2563eb; }
+        /* Transitions */
+        .nav-link, .cta-button, .project-nav-link, .filter-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover { color: #2563eb; }
 
-/* Styles for Scrollable Project List */
-.project-list-wrapper {
-    overflow-y: auto;
-    max-height: 500px; /* This is the "smaller" scroll area */
-    background-color: #f8fafc; /* slate-50 */
-    border: 1px solid #e2e8f0; /* slate-200 */
-    border-radius: 0.5rem; /* rounded-lg */
-    padding: 0.5rem; /* p-2 */
-}
-/* Custom scrollbar for WebKit browsers */
-.project-list-wrapper::-webkit-scrollbar { width: 8px; }
-.project-list-wrapper::-webkit-scrollbar-track { background: transparent; border-radius: 10px; }
-.project-list-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; /* slate-300 */ border-radius: 10px; }
-.project-list-wrapper::-webkit-scrollbar-thumb:hover { background: #94a3b8; /* slate-400 */ }
+        /* Styles for Scrollable Project List */
+        .project-list-wrapper {
+            overflow-y: auto;
+            max-height: 500px; 
+            background-color: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 0.5rem; 
+            padding: 0.5rem; 
+        }
+        .project-list-wrapper::-webkit-scrollbar { width: 8px; }
+        .project-list-wrapper::-webkit-scrollbar-track { background: transparent; border-radius: 10px; }
+        .project-list-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .project-list-wrapper::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+        /* Styles for the Project sidebar */
+        .project-nav-link {
+            display: block;
+            padding: 0.75rem 1rem; 
+            border-radius: 0.5rem;
+            color: #334155; 
+        }
+        .project-nav-link:hover {
+            background-color: #f1f5f9; 
+            color: #1e40af; 
+        }
+        .project-nav-link.active {
+            background-color: #dbeafe; 
+            color: #1e40af; 
+        }
 
-/* Styles for the Project sidebar */
-.project-nav-link {
-    display: block;
-    padding: 0.75rem 1rem; /* 12px 16px */
-    border-radius: 0.5rem;
-    color: #334155; /* slate-700 */
-}
-.project-nav-link:hover {
-    background-color: #f1f5f9; /* slate-100 */
-    color: #1e40af; /* blue-800 */
-}
-.project-nav-link.active {
-    background-color: #dbeafe; /* blue-100 */
-    color: #1e40af; /* blue-800 */
-}
+        .project-nav-link .project-title {
+            font-weight: 500; 
+            font-size: 0.875rem; 
+            color: #1e293b; 
+        }
+        .project-nav-link.active .project-title {
+            font-weight: 600; 
+            color: #1e40af; 
+        }
 
-/* === FONT SIZE FIX === */
-.project-nav-link .project-title {
-    font-weight: 500; /* Was 600 (semibold) -> now medium */
-    font-size: 0.875rem; /* 14px - Was 1rem (16px) */
-    color: #1e293b; /* slate-800 */
-}
-.project-nav-link.active .project-title {
-    font-weight: 600; /* On active, make it semibold */
-    color: #1e40af; /* blue-800 */
-}
+        /* Tags in Sidebar */
+        .project-nav-link .project-tag {
+            display: inline-block;
+            font-size: 0.7rem; 
+            font-weight: 500;
+            line-height: 1.25;
+            background-color: #dbeafe; 
+            color: #1e40af; 
+            padding: 0.15rem 0.4rem; 
+            border-radius: 0.25rem; 
+            margin-right: 4px;
+            margin-top: 5px;
+        }
+        .project-nav-link.active .project-tag {
+            background-color: #bfdbfe;
+        }
 
-/* "Light Blue" Tag Colors */
-.project-nav-link .project-tag {
-    display: inline-block;
-    font-size: 0.75rem; /* 12px */
-    font-weight: 500;
-    line-height: 1.25;
-    background-color: #dbeafe; /* blue-100 */
-    color: #1e40af; /* blue-800 */
-    padding: 0.25rem 0.5rem; /* 4px 8px */
-    border-radius: 0.25rem; /* 4px */
-    margin-right: 4px;
-    margin-top: 6px;
-}
-.project-nav-link.active .project-tag {
-    background-color: #bfdbfe; /* blue-200 */
-    color: #1e40af; /* blue-800 */
-}
+        /* === STYLES FOR GOALS PAGE === */
+        .story-arc p {
+            font-size: 1.125rem; 
+            color: #334155; 
+            padding-bottom: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            border-bottom: 1px solid #e2e8f0; 
+        }
+        .story-arc:last-of-type p {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .lifecycle-card {
+            background-color: white;
+            padding: 1.5rem; 
+            border-radius: 0.5rem; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); 
+            border-left-width: 4px;
+        }
+        .lifecycle-card.lifecycle-quantify { border-left-color: #f97316; }
+        .lifecycle-card.lifecycle-design { border-left-color: #f97316; }
+        .lifecycle-card.lifecycle-govern { border-left-color: #f97316; }
 
-/* === STYLES FOR GOALS PAGE === */
-.story-arc p {
-    font-size: 1.125rem; /* 18px, text-lg */
-    color: #334155; /* slate-700 */
-    padding-bottom: 1.5rem; /* pb-6 */
-    margin-bottom: 1.5rem; /* mb-6 */
-    border-bottom: 1px solid #e2e8f0; /* border-slate-200 */
-}
-.story-arc:last-of-type p {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-.lifecycle-card {
-    background-color: white;
-    padding: 1.5rem; /* p-6 */
-    border-radius: 0.5rem; /* rounded-lg */
-    border: 1px solid #e2e8f0; /* border-slate-200 */
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow-sm */
-    border-left-width: 4px;
-}
-.lifecycle-card.lifecycle-quantify { border-left-color: #f97316; /* orange-600 */ }
-.lifecycle-card.lifecycle-design { border-left-color: #f97316; /* orange-600 */ }
-.lifecycle-card.lifecycle-govern { border-left-color: #f97316; /* orange-600 */ }
+        .project-link {
+            color: #2563eb; 
+            font-weight: 500; 
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+            color: #1d4ed8; 
+        }
 
-/* Project link on Goals page */
-.project-link {
-    color: #2563eb; /* blue-600 */
-    font-weight: 500; /* medium */
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-}
-.project-link:hover {
-    text-decoration: underline;
-    color: #1d4ed8; /* blue-700 */
-}
+        /* === STYLES FOR SKILLS TABLE === */
+        .skill-col {
+            padding: 1rem 1.5rem; 
+            vertical-align: top;
+            font-size: 0.875rem; 
+            color: #334155; 
+            display: block;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .skill-col {
+                display: table-cell;
+                width: auto;
+            }
+        }
+        .skill-col ul { margin-top: 0.5rem; }
+        .skill-header {
+            font-size: 0.875rem; 
+            font-weight: 600; 
+            color: #1e293b; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1.5rem; 
+        }
+        .skill-item li {
+            position: relative;
+            padding-left: 1.25rem; 
+            margin-bottom: 0.75rem; 
+        }
+        .skill-item li::before {
+            content: '•';
+            position: absolute;
+            left: 0.25rem;
+            top: 0;
+            color: #94a3b8; 
+            font-size: 0.875rem;
+        }
 
-/* === STYLES FOR SKILLS TABLE === */
-.skill-col {
-    padding: 1rem 1.5rem; /* p-4 px-6 */
-    vertical-align: top;
-    font-size: 0.875rem; /* 14px */
-    color: #334155; /* slate-700 */
-    /* On mobile, make them stack */
-    display: block;
-    width: 100%;
-}
-@media (min-width: 768px) {
-    .skill-col {
-        display: table-cell;
-        width: auto; /* <-- ADD THIS LINE */
-    }
-}
-.skill-col ul {
-    margin-top: 0.5rem; /* my-2 */
-}
-.skill-header {
-    font-size: 0.875rem; /* 14px */
-    font-weight: 600; /* semibold */
-    color: #1e293b; /* slate-800 */
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.75rem 1.5rem; /* py-3 px-6 */
-}
-.skill-item li {
-    position: relative;
-    padding-left: 1.25rem; /* pl-5 */
-    margin-bottom: 0.75rem; /* space-y-3 */
-}
-.skill-item li::before {
-    content: '•';
-    position: absolute;
-    left: 0.25rem;
-    top: 0;
-    color: #94a3b8; /* slate-400 */
-    font-size: 0.875rem;
-}
+        /* === BADGE SYSTEM === */
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem; 
+            font-weight: 500;
+            line-height: 1.25;
+            padding: 0.125rem 0.375rem; 
+            border-radius: 0.25rem; 
+            margin-left: 4px;
+            margin-top: 4px; 
+            white-space: nowrap;
+            transition: all 0.2s ease-in-out;
+        }
+        .badge-proj {
+            background-color: #dbeafe; 
+            color: #1e40af; 
+            text-decoration: none;
+        }
+        .badge-proj:hover {
+            background-color: #bfdbfe; 
+            text-decoration: underline;
+        }
+        .badge-work {
+            background-color: #e2e8f0; 
+            color: #334155; 
+        }
 
-/* === NEW Badge System Styles (v2) === */
-.badge {
-    display: inline-block;
-    font-size: 0.75rem; /* 12px */
-    font-weight: 500;
-    line-height: 1.25;
-    padding: 0.125rem 0.375rem; /* 2px 6px */
-    border-radius: 0.25rem; /* 4px */
-    margin-left: 4px;
-    margin-top: 4px; /* Added for better wrapping */
-    white-space: nowrap;
-    transition: all 0.2s ease-in-out;
-}
-/* Project Evidence Badge (as a link) */
-.badge-proj {
-    background-color: #dbeafe; /* blue-100 */
-    color: #1e40af; /* blue-800 */
-    text-decoration: none;
-}
-.badge-proj:hover {
-    background-color: #bfdbfe; /* blue-200 */
-    text-decoration: underline;
-}
-/* Work Experience Badge (as text) */
-.badge-work {
-    background-color: #e2e8f0; /* slate-200 */
-    color: #334155; /* slate-700 */
-}
+        /* === FEATURE: SCROLL REVEAL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === FEATURE: TYPEWRITER CURSOR === */
+        .cursor-blink {
+            display: inline-block;
+            width: 10px;
+            background-color: #2563eb; /* Blue cursor */
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
 
     </style>
 </head>
@@ -246,29 +260,34 @@ p { margin-bottom: 1em; }
         <section id="about" class="page-section py-12 md:py-20">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="flex-1">
-                    <span class="text-blue-600 font-semibold">AI STRATEGIST | AI GOVERNANCE | TRUST & RISK</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6 leading-tight">
+                    <div class="h-8 mb-1">
+                        <span class="text-blue-600 font-semibold font-[JetBrains_Mono] text-sm md:text-base">
+                            > <span id="typewriter-text"></span><span class="cursor-blink">|</span>
+                        </span>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                         Pete Trujillo
                     </h2>
                     <p class="text-lg text-slate-600 mb-6">
                         I build and scale responsible, high-impact AI solutions. My work bridges the gap between ambitious product vision and practical, defensible AI governance.
-					</p>
-					<p class="text-lg text-slate-600 mb-6">
+                    </p>
+                    <p class="text-lg text-slate-600 mb-6">
                         With 15+ years of experience at firms like <span class="font-bold">Microsoft</span>, <span class="font-bold">Nuance</span>, and <span class="font-bold">J.D. Power</span>, I translate complex AI concepts into measurable business value. I am currently deepening my expertise with a <span class="font-bold">M.S. in AI: Management & Policy from Purdue University</span> (Dec 2025).
                     </p>
                     
                     <div class="my-8">
                         <h3 class="text-xl font-semibold text-slate-800 mb-4">My Advisory Approach</h3>
                         <div class="grid sm:grid-cols-3 gap-6">
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 reveal">
                                 <h4 class="font-semibold text-slate-700">Defensible Strategy & Trust</h4>
                                 <p class="text-sm text-slate-600 mt-1">I turn ethics and policy into a competitive advantage, building customer trust and regulatory resilience.</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 reveal">
                                 <h4 class="font-semibold text-slate-700">Strategic Problem-Solving</h4>
                                 <p class="text-sm text-slate-600 mt-1">I use a detective's approach—combining root cause analysis and market research—to solve complex, high-stakes problems.</p>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 reveal">
                                 <h4 class="font-semibold text-slate-700">Rapid Domain Learning</h4>
                                 <p class="text-sm text-slate-600 mt-1">I am self-taught and fast to pick up new tools and domains, from AI policy to new coding frameworks.</p>
                             </div>
@@ -300,15 +319,15 @@ p { margin-bottom: 1em; }
                     Career Pivot: From Consumer Protection to Trusted AI Advisor
                 </h2>
 
-                <div class="story-arc mb-8">
+                <div class="story-arc mb-8 reveal">
                     <p><strong>I started in consumer rights.</strong> At the LA County Department of Consumer and Business Affairs (DCBA), I redesigned complaint intake to protect vulnerable citizens. At J.D. Power, I turned Voice of Customer into actionable insights. My undergrad in Family &amp; Consumer Sciences drilled in privacy law and ethical business.</p>
                 </div>
 
-                <div class="story-arc mb-8">
+                <div class="story-arc mb-8 reveal">
                     <p><strong>Then I saw AI’s double edge.</strong> At Microsoft/Nuance, I optimized AI bots that replaced human jobs — and witnessed the risks: hallucinations, bias, data leaks. I realized: <em>technology has no morals. We need experts to govern it.</em></p>
                 </div>
 
-                <div class="pivot-statement bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-12 border-l-4 border-orange-600">
+                <div class="pivot-statement bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-12 border-l-4 border-orange-600 reveal">
                     <p class="font-semibold text-lg text-slate-800">Today, I pivot to <strong>Principal AI Governance Strategist (IC)</strong>.</p>
                     <p class="text-slate-700">I lead through expertise — quantifying risk, designing solutions, and building NIST-aligned governance that scales trust.</p>
                     <p class="mt-3 text-sm font-medium text-indigo-700">
@@ -321,7 +340,7 @@ p { margin-bottom: 1em; }
                     <h3 class="text-2xl font-bold mb-6 text-slate-800">My Projects = The Trusted AI Advisor Lifecycle</h3>
                     <div class="grid md:grid-cols-3 gap-8">
 
-                        <div class="lifecycle-card lifecycle-quantify">
+                        <div class="lifecycle-card lifecycle-quantify reveal">
                             <strong class="block text-xl mb-1 font-semibold text-slate-800">Quantify</strong>
                             <p class="text-slate-600">Financialize abstract risks with ROI modeling &amp; forecasting</p>
                             <em class="text-sm text-slate-500 mt-2 block">
@@ -331,7 +350,7 @@ p { margin-bottom: 1em; }
                             </em>
                         </div>
 
-                        <div class="lifecycle-card lifecycle-design">
+                        <div class="lifecycle-card lifecycle-design reveal">
                             <strong class="block text-xl mb-1 font-semibold text-slate-800">Design</strong>
                             <p class="text-slate-600">Architect secure, user-centric AI agents &amp; systems</p>
                             <em class="text-sm text-slate-500 mt-2 block">
@@ -341,7 +360,7 @@ p { margin-bottom: 1em; }
                             </em>
                         </div>
 
-                        <div class="lifecycle-card lifecycle-govern">
+                        <div class="lifecycle-card lifecycle-govern reveal">
                             <strong class="block text-xl mb-1 font-semibold text-slate-800">Govern</strong>
                             <p class="text-slate-600">Deploy with NIST/ISO impact assessments &amp; policy</p>
                             <em class="text-sm text-slate-500 mt-2 block">
@@ -356,7 +375,7 @@ p { margin-bottom: 1em; }
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8 mt-12">
-                    <div class="energizes-section bg-green-50 p-6 rounded-lg border border-green-200">
+                    <div class="energizes-section bg-green-50 p-6 rounded-lg border border-green-200 reveal">
                         <h3 class="text-xl font-bold mb-4 flex items-center text-green-900">
                             <i data-lucide="zap" class="w-6 h-6 mr-2 text-green-700"></i>
                             What Energizes Me
@@ -371,7 +390,7 @@ p { margin-bottom: 1em; }
                         </ul>
                     </div>
 
-                    <div class="avoids-section bg-orange-50 p-6 rounded-lg border border-orange-200">
+                    <div class="avoids-section bg-orange-50 p-6 rounded-lg border border-orange-200 reveal">
                         <h3 class="text-xl font-bold mb-4 flex items-center text-orange-900">
                             <i data-lucide="alert-circle" class="w-6 h-6 mr-2 text-orange-700"></i>
                             What I’m Not Looking For
@@ -393,485 +412,478 @@ p { margin-bottom: 1em; }
 
         </section>
 
-<section id="projects" class="page-section hidden py-12 md:py-20">
-    <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">Strategic AI Projects</h2>
+        <section id="projects" class="page-section hidden py-12 md:py-20">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">Strategic AI Projects</h2>
 
-        <div class="grid md:grid-cols-5 gap-8">
-            <div class="bg-white p-8 rounded-lg shadow-md border md:col-span-2">
-                <div class="project-list-wrapper">
-                    <a href="#" class="project-nav-link flex flex-col" data-project="start">
-                        <span class="project-title">Select a Project</span>
-                        <span class="text-xs text-slate-500">Explore my strategic AI work</span>
-                    </a>
+                <div class="grid md:grid-cols-5 gap-8">
 
-                    <a href="#" class="project-nav-link" data-project="capstone">
-                        <span class="project-title">AI Governance & XAI Scoring (Capstone)</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">Trusted AI</span>
-                            <span class="project-tag">AI Governance</span>
-                            <span class="project-tag">NIST AI RMF</span>
-                            <span class="project-tag">XAI</span>
-                            <span class="project-tag">Risk Management</span>
-                        </div>
-                    </a>
-
-					<a href="#" class="project-nav-link" data-project="inworld">
-					    <span class="project-title">InWorld GenAI Impact Assessment</span>
-					    <div class="flex flex-wrap gap-1 mt-1">
-					        <span class="project-tag">AI Governance</span>
-					        <span class="project-tag">NIST AI RMF</span>
-					        <span class="project-tag">GenAI Risk</span>
-					        <span class="project-tag">Global Regulation</span>
-					    </div>
-					</a>
-
-                    <a href="#" class="project-nav-link" data-project="monarch">
-                        <span class="project-title">Monarque Solutions (Full-Stack)</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">AI Tool Design</span>
-                            <span class="project-tag">Risk & ROI Calculation</span>
-                            <span class="project-tag">AI Governance</span>
-                            <span class="project-tag">Interactive Deployment</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-nav-link" data-project="energy">
-                        <span class="project-title">AI Energy Consumption Policy Brief</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">AI Policy</span>
-                            <span class="project-tag">Sustainability</span>
-                            <span class="project-tag">Governance</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="project-nav-link" data-project="wildfire">
-                        <span class="project-title">AI Wildfire Risk Policy Brief</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">Risk Mitigation</span>
-                            <span class="project-tag">Policy Brief</span>
-                            <span class="project-tag">NIST RMF</span>
-                        </div>
-                    </a>
-						<a href="#" class="project-nav-link" data-project="fitassist">
-						<span class="project-title">FitAssist AI Trainer Agent</span>
-						<div class="flex flex-wrap gap-1 mt-1">
-							<span class="project-tag">AI Ethics</span>
-							<span class="project-tag">LLM Tuning</span>
-							<span class="project-tag">Confidence Scoring</span>
-							<span class="project-tag">HIPAA</span>
-						</div>
-					</a>
-                    <a href="#" class="project-nav-link" data-project="pegasus">
-                        <span class="project-title">Pegasus Framework</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">AI Strategy</span>
-                            <span class="project-tag">Analytics Playbook</span>
-                            <span class="project-tag">Client Value</span>
-                            <span class="project-tag">Process Standardization</span>
-                        </div>
-                    </a>
-					                    <a href="#" class="project-nav-link" data-project="cruise">
-                        <span class="project-title">Memorable Moments AI</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">AI Product Strategy</span>
-                            <span class="project-tag">Market Research</span>
-                            <span class="project-tag">Guest Experience</span>
-                        </div>
-                    </a>
-					                    <a href="#" class="project-nav-link" data-project="invision">
-                        <span class="project-title">InVision VR EdTech Plan</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">Business Strategy</span>
-                            <span class="project-tag">Go-to-Market</span>
-                            <span class="project-tag">EdTech</span>
-                        </div>
-                    </a>
-                    <a href="#" class="project-nav-link" data-project="probono">
-                        <span class="project-title">Pro Bono: AI Ethics for Non-Profits</span>
-                        <div class="flex flex-wrap gap-1 mt-1">
-                            <span class="project-tag">AI Ethics</span>
-                            <span class="project-tag">Non-Profit</span>
-                            <span class="project-tag">Governance</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="md:col-span-3 space-y-12">
-
-<div id="project-start" class="project-detail">
-                    <div class="bg-white p-8 rounded-lg shadow-md border border-slate-200">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-slate-200 md:col-span-2 flex flex-col h-[600px]">
                         
-                        <div class="flex items-center gap-3 mb-2">
-                            <i data-lucide="sparkles" class="w-8 h-8 text-blue-600 flex-shrink-0"></i>
-                            <h3 class="text-2xl font-semibold text-slate-800">A Lifecycle Approach to AI Strategy</h3>
+                        <div class="mb-4 flex-shrink-0">
+                            <label for="project-search" class="block text-sm font-semibold text-slate-700 mb-2">
+                                Filter Projects
+                            </label>
+                            <div class="relative">
+                                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                                <input 
+                                    type="text" 
+                                    id="project-search" 
+                                    placeholder="Search keywords (e.g. Policy, ROI, NIST)..." 
+                                    class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all text-sm"
+                                >
+                            </div>
                         </div>
 
-                        <p class="text-slate-600 mb-6">
-                            My projects demonstrate the complete lifecycle of a <strong>Trusted AI Advisor</strong>. I don't just write policy; I quantify risk, design the solution, and create the governance plan to deploy it defensibly.
-                        </p>
+                        <div class="project-list-wrapper flex-grow overflow-y-auto pr-2">
+                            <a href="#" class="project-nav-link" data-project="start" id="reset-link">
+                                <span class="project-title text-slate-500 italic">View All / Reset Selection</span>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="capstone">
+                                <span class="project-title">AI Governance & XAI Scoring (Capstone)</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">NIST AI RMF</span>
+                                    <span class="project-tag">RAG Architecture</span>
+                                    <span class="project-tag">Full-Stack</span>
+                                    <span class="project-tag">XAI</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="inworld">
+                                <span class="project-title">InWorld GenAI Impact Assessment</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">Impact Assessment</span>
+                                    <span class="project-tag">GenAI Risk</span>
+                                    <span class="project-tag">EU AI Act</span>
+                                    <span class="project-tag">NIST AI RMF</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="monarch">
+                                <span class="project-title">Monarque Solutions (Full-Stack)</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">Full-Stack Build</span>
+                                    <span class="project-tag">ROI Modeling</span>
+                                    <span class="project-tag">Product Design</span>
+                                    <span class="project-tag">Privacy</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="energy">
+                                <span class="project-title">AI Energy Consumption Policy Brief</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">AI Policy</span>
+                                    <span class="project-tag">Sustainability</span>
+                                    <span class="project-tag">Infrastructure</span>
+                                    <span class="project-tag">Governance</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="wildfire">
+                                <span class="project-title">AI Wildfire Risk Policy Brief</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">AI Policy</span>
+                                    <span class="project-tag">Computer Vision</span>
+                                    <span class="project-tag">Public Sector</span>
+                                    <span class="project-tag">NIST AI RMF</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="fitassist">
+                                <span class="project-title">FitAssist AI Trainer Agent</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">GenAI Product</span>
+                                    <span class="project-tag">LLM Tuning</span>
+                                    <span class="project-tag">HITL</span>
+                                    <span class="project-tag">HIPAA</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="pegasus">
+                                <span class="project-title">Pegasus Framework</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">AI Strategy</span>
+                                    <span class="project-tag">Process Optimization</span>
+                                    <span class="project-tag">Analytics</span>
+                                    <span class="project-tag">KPIs</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="cruise">
+                                <span class="project-title">Memorable Moments AI</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">Product Strategy</span>
+                                    <span class="project-tag">Computer Vision</span>
+                                    <span class="project-tag">Biometrics</span>
+                                    <span class="project-tag">CX</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="invision">
+                                <span class="project-title">InVision VR EdTech Plan</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">GTM Strategy</span>
+                                    <span class="project-tag">Financial Modeling</span>
+                                    <span class="project-tag">VR/AR</span>
+                                    <span class="project-tag">EdTech</span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="project-nav-link" data-project="probono">
+                                <span class="project-title">Pro Bono: AI Ethics for Non-Profits</span>
+                                <div class="mt-1">
+                                    <span class="project-tag">AI Ethics</span>
+                                    <span class="project-tag">Advisory</span>
+                                    <span class="project-tag">Governance</span>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-3 space-y-12">
                         
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
-                                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
-                                    </span>
+                        <div id="project-start" class="project-detail">
+                            <div class="bg-white p-8 rounded-lg shadow-md border border-slate-200">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i data-lucide="sparkles" class="w-8 h-8 text-blue-600 flex-shrink-0"></i>
+                                    <h3 class="text-2xl font-semibold text-slate-800">A Lifecycle Approach to AI Strategy</h3>
                                 </div>
-                                <div>
-                                    <h4 class="font-semibold text-slate-800">Quantify</h4>
-                                    <p class="text-sm text-slate-600">
-                                        I use an analytical approach to prove <strong>why</strong> an AI intervention is necessary, translating abstract risks—like employee burnout or market entry barriers—into concrete financial models and ROI forecasts.
-                                        <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
-                                        <a href="#projects" data-project="monarch" class="project-link text-blue-600 hover:underline">Monarque ROI Calculator</a>, 
-                                        <a href="#projects" data-project="invision" class="project-link text-blue-600 hover:underline">InVision Financial Model</a></em>
-                                    </p>
-                                </div>
-                            </div>
+                                <p class="text-slate-600 mb-6">
+                                    My projects demonstrate the complete lifecycle of a <strong>Trusted AI Advisor</strong>. I don't just write policy; I quantify risk, design the solution, and create the governance plan to deploy it defensibly.
+                                </p>
+                                <div class="space-y-6">
+                                    <div class="flex items-start gap-4">
+                                        <div class="flex-shrink-0">
+                                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
+                                                <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-800">Quantify</h4>
+                                            <p class="text-sm text-slate-600">
+                                                I use an analytical approach to prove <strong>why</strong> an AI intervention is necessary, translating abstract risks—like employee burnout or market entry barriers—into concrete financial models and ROI forecasts.
+                                                <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
+                                                <a href="#projects" data-project="monarch" class="project-link text-blue-600 hover:underline">Monarque ROI Calculator</a>, 
+                                                <a href="#projects" data-project="invision" class="project-link text-blue-600 hover:underline">InVision Financial Model</a></em>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
-                                        <i data-lucide="cpu" class="w-5 h-5"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-slate-800">Design</h4>
-                                    <p class="text-sm text-slate-600">
-                                        I apply deep product management experience to <strong>architect</strong> the technical solution, creating the data flow diagrams, agent logic, and system designs for secure, user-centric applications.
-                                        <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
-                                        <a href="#projects" data-project="fitassist" class="project-link text-blue-600 hover:underline">FitAssist AI Agent</a>, 
-                                        <a href="#projects" data-project="capstone" class="project-link text-blue-600 hover:underline">AI Scoring System</a></em>
-                                    </p>
-                                </div>
-                            </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="flex-shrink-0">
+                                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
+                                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-800">Design</h4>
+                                            <p class="text-sm text-slate-600">
+                                                I apply deep product management experience to <strong>architect</strong> the technical solution, creating the data flow diagrams, agent logic, and system designs for secure, user-centric applications.
+                                                <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
+                                                <a href="#projects" data-project="fitassist" class="project-link text-blue-600 hover:underline">FitAssist AI Agent</a>, 
+                                                <a href="#projects" data-project="capstone" class="project-link text-blue-600 hover:underline">AI Scoring System</a></em>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
-                                        <i data-lucide="shield-check" class="w-5 h-5"></i>
-                                    </span>
+                                    <div class="flex items-start gap-4">
+                                        <div class="flex-shrink-0">
+                                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700">
+                                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-800">Govern</h4>
+                                            <p class="text-sm text-slate-600">
+                                                I create the essential governance artifacts (Impact Assessments, Policy Briefs) to ensure solutions are deployed ethically and in alignment with frameworks like NIST AI RMF and ISO 42001.
+                                                <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
+                                                <a href="#projects" data-project="inworld" class="project-link text-blue-600 hover:underline">InWorld GenAI Assessment</a>, 
+                                                <a href="#projects" data-project="wildfire" class="project-link text-blue-600 hover:underline">CA Wildfire Policy</a></em>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-semibold text-slate-800">Govern</h4>
-                                    <p class="text-sm text-slate-600">
-                                        I create the essential governance artifacts (Impact Assessments, Policy Briefs) to ensure solutions are deployed ethically and in alignment with frameworks like NIST AI RMF and ISO 42001.
-                                        <br><em class="mt-2 block"><strong class="text-slate-700">See:</strong> 
-                                        <a href="#projects" data-project="inworld" class="project-link text-blue-600 hover:underline">InWorld GenAI Assessment</a>, 
-                                        <a href="#projects" data-project="wildfire" class="project-link text-blue-600 hover:underline">CA Wildfire Policy</a></em>
-                                    </p>
-                                </div>
+                                <p class="text-center text-slate-500 italic mt-8">Select any project on the left to see the details.</p>
                             </div>
                         </div>
 
-                        <p class="text-center text-slate-500 italic mt-8">Select any project on the left to see the details.</p>
-                    </div>
-                </div>
+                        <div id="project-capstone" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Governance & XAI Scoring (Capstone)</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I designed an industry-agnostic AI governance framework and XAI scoring system that turns ethics into competitive advantage.</strong> 
+                                While applied in education, the deliverables — modular governance, compliance mapping, and XAI rubric — are adaptable to any regulated environment.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>Trusted Advisor:</strong> Delivered executive-ready governance artifacts</li>
+                                <li><strong>AI Governance:</strong> Mapped NIST AI RMF controls to product features</li>
+                                <li><strong>XAI Design:</strong> Transparent, rubric-based scoring for explainability</li>
+                                <li><strong>Risk Management:</strong> Ethical risks identified + mitigations</li>
+                                <li><strong>Stakeholder Alignment:</strong> Personas (student, parent, teacher, admin)</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">EdTech AI lacks transparency, ethics, and compliance.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Led governance, XAI rubric, risk framework, architecture.</p></div>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://ai-tutor-demo-a6cs.onrender.com/" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i> View Live AI Demo
+                                </a>
+                                <a href="https://petetrujillo.com/purdue_msai_capstone/" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="layout" class="w-4 h-4"></i> Interface Mockups
+                                </a>
+                                <a href="#" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Documentation (Coming Soon)
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                <p class="text-sm text-blue-900"><strong>Outcome:</strong> Defensible, scalable AI with embedded ethics — ready for FERPA, NIST, enterprise.</p>
+                            </div>
+                        </div>
 
-                <div id="project-capstone" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Governance & XAI Scoring (Capstone)</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I designed an industry-agnostic AI governance framework and XAI scoring system that turns ethics into competitive advantage.</strong> 
-                        While applied in education, the deliverables — modular governance, compliance mapping, and XAI rubric — are adaptable to any regulated environment.
-                    </p>
+                        <div id="project-pegasus" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pegasus Framework</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I built and scaled a 6-phase analytical playbook that standardized AI bot optimization for enterprise clients.</strong> 
+                                Transformed inconsistent analyst output into consistent, high-impact, product-relevant insights.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>AI Strategy:</strong> End-to-end process for consulting, analysis, value delivery</li>
+                                <li><strong>Root Cause Analysis:</strong> Beyond symptoms to KPI-impacting issues</li>
+                                <li><strong>Stakeholder Management:</strong> Tactical + executive alignment</li>
+                                <li><strong>Impact Forecasting:</strong> Pre/post-deployment KPI tracking + ROI</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Insights team delivered high-value AI bot optimization recommendations, but analysts lacked deep analytics/product thinking skills—leading to inconsistent report quality and limited scaling of services.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Designed codified playbook (Pegasus Framework) + structured training program; upskilled team to deliver consistent, product-relevant insights improving client decision-making and AI service value.</p></div>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="assets/fw_project_pegasus.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Pegasus Framework
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                                <p class="text-sm text-green-900"><strong>Impact:</strong> 10% improvement in report quality, 5% reduction in presentation dev time, more actionable client insights.</p>
+                            </div>
+                        </div>
 
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>Trusted Advisor:</strong> Delivered executive-ready governance artifacts</li>
-                        <li><strong>AI Governance:</strong> Mapped NIST AI RMF controls to product features</li>
-                        <li><strong>XAI Design:</strong> Transparent, rubric-based scoring for explainability</li>
-                        <li><strong>Risk Management:</strong> Ethical risks identified + mitigations</li>
-                        <li><strong>Stakeholder Alignment:</strong> Personas (student, parent, teacher, admin)</li>
-                    </ul>
+                        <div id="project-cruise" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Memorable Moments AI</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I developed an AI-driven strategy to enhance cruise guest satisfaction through hyper-personalized "memorable moments."</strong> 
+                                Backed by Mintel/Kantar research, identified high-impact AI opportunities.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>Market Research:</strong> Consumer intent, pain points, AI opportunity areas</li>
+                                <li><strong>AI Product Strategy:</strong> Interventions for destination, onboard experience</li>
+                                <li><strong>Thought Leadership:</strong> DALL·E 3 visual deck for C-suite</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Opportunity</h5><p class="text-sm text-slate-600">34% plan to cruise; 55% prioritize destination/onboard.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Led research, AI mapping, executive pitch.</p></div>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="assets/vd_cruise_memorable_moments_ai.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Deck
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                                <p class="text-sm text-orange-900"><strong>Outcome:</strong> Proposal for innovative use of AI to enhance guest experiences.</p>
+                            </div>
+                        </div>
 
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">EdTech AI lacks transparency, ethics, and compliance.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Led governance, XAI rubric, risk framework, architecture.</p></div>
-                    </div>
+                        <div id="project-invision" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">InVision VR EdTech Plan</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I co-authored a 32-page business plan for InVision Learning, a VR-based education platform delivering immersive learning for K-12 and corporate training.</strong> 
+                                Defined product, market opportunity, GTM strategy, rollout phases, revenue streams, and financial projections.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>Business Strategy:</strong> Analyzed sectors (K-12, corporate L&D), competitors, barriers, and demand drivers</li>
+                                <li><strong>Go-to-Market:</strong> Built marketing plan, partnerships, billing processes, data protocols, and market differentiators</li>
+                                <li><strong>Financial Modeling:</strong> Projected revenue streams (subscriptions, partnerships) and performance metrics for investor pitch</li>
+                                <li><strong>Action Planning:</strong> Phased rollout (R&D, soft launch, enhancements) with staff/operational details</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">EdTech lacks immersive VR solutions for diverse sectors; need comprehensive plan covering market use cases, barriers (e.g., adoption costs), competitors, and scalable rollout to capture growing demand in K-12/corporate training.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Co-led plan development: Defined product/ops, executed market analysis, crafted GTM/financials, and outlined phased action plan for investor-ready scalability.</p></div>
+                            </div>
+                            <div class="flex gap-3 mb-6">
+                                <a href="assets/bp_invision_learning.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Business Plan
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                                <p class="text-sm text-purple-900"><strong>Outcome:</strong> Investor-ready blueprint with clear path to revenue; positioned InVision as VR leader in immersive education.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="project-monarch" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Monarque Solutions (Full-Stack)</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I partnered with a consulting firm to design and build a full-stack AI solution to combat employee burnout from caregiving.</strong><BR>
+                                <br>1. <strong>Quantify Risk:</strong> I built an <strong>AI-powered ROI Calculator</strong> to prove the significant financial risk of manager-employee disconnect.
+                                <br>2. <strong>Build Solution:</strong> I developed the <strong>AI Voice Coach</strong>, a secure, full-stack application for managers to practice empathetic conversations.
+                                <br>3. <strong>Govern Deployment:</strong> I created the complete governance suite (Impact Assessment, PRD, Data Flow) to ensure a defensible, ethical, and private-by-design deployment.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>Full-Stack AI Product Dev:</strong> From ROI modeling to a secure, deployed web app.</li>
+                                <li><strong>AI Governance (NIST RMF):</strong> Authored a full AI Impact Assessment (see link below).</li>
+                                <li><strong>Rapid Prototyping:</strong> Coded and deployed both interactive tools as a solo IC.</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Clients understood the <strong>idea</strong> of caregiver burnout risk but lacked tools to quantify the financial impact or scalably train managers to fix it.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Lead Strategist, Designer, and Developer. I engineered the ROI formulas, built the AI calculator, then designed, built, and wrote the governance for the AI Voice Coach solution.</p></div>
+                            </div>
+                            <div class="flex flex-wrap gap-x-4 gap-y-2">
+                                <a href="https://peppy-belekoy-75b429.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i> Live ROI Calculator Demo
+                                </a>
+                                <a href="httpsaivoicecoachcaregiver.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i> Live AI Coach Demo
+                                </a>
+                                <a href="" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> AI Impact Assessment (NIST) {Coming Soon}
+                                </a>
+                                <a href="" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Product Requirements Doc (PRD) {Coming Soon}
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                                <p class="text-sm text-green-900"><strong>Status:</strong> Both applications are live and fully documented with a "trust-by-design" governance framework.</p>
+                            </div>
+                        </div>
 
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://ai-tutor-demo-a6cs.onrender.com/" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="external-link" class="w-4 h-4"></i> View Live AI Demo
-                        </a>
-                        <a href="https://petetrujillo.com/purdue_msai_capstone/" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="layout" class="w-4 h-4"></i> Interface Mockups
-                        </a>
-                        <a href="#" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Full Documentation (Coming Soon)
-                        </a>
-                    </div>
+                        <div id="project-energy" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Energy Consumption Policy Brief</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I authored a policy brief analyzing AI's environmental footprint, proposing NIST RMF-adapted governance frameworks to mitigate energy risks and promote sustainable scaling.</strong> 
+                                Highlighted data center growth (from 1.9% to 4%+ of U.S. electricity) and global projections (up to 21% by 2030), advocating for regulatory resilience.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>AI Policy Research:</strong> Quantified energy/carbon impacts from data centers and LLM training</li>
+                                <li><strong>Governance Innovation:</strong> Adapted NIST RMF for sustainability mandates and efficiency benchmarks</li>
+                                <li><strong>Thought Leadership:</strong> Influenced AI labs/regulators on defensible energy strategies</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">AI's rapid growth drives data center energy use (176 TWh in U.S. by 2023, projected 7-12% of electricity by 2028), risking regulatory backlash and sustainability gaps without proactive frameworks.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Reseached trends/projections; authored brief with NIST-based mitigations for state-level adoption and corporate compliance.</p></div>
+                            </div>
+                            <div class="flex gap-3 mb-6">
+                                <a href="assets/pb_ca_ai_energy_problem.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Policy Brief
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                                <p class="text-sm text-orange-900"><strong>Outcome:</strong> Framework proposed to guide sustainable AI deployment.</p>
+                            </div>
+                        </div>
 
-                    <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p class="text-sm text-blue-900"><strong>Outcome:</strong> Defensible, scalable AI with embedded ethics — ready for FERPA, NIST, enterprise.</p>
-                    </div>
-                </div>
+                        <div id="project-wildfire" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Wildfire Risk Policy Brief</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I authored a policy brief on AI's role in wildfire prediction gaps, designing NIST RMF adaptations to enable early risk flagging and defensible mitigation strategies.</strong> 
+                                Addressed escalating megafires (1.7M+ acres burned in 2023) and tech equity issues in Global South landscapes.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>Risk Mitigation:</strong> Analyzed prediction models, vegetation/climate data for proactive alerts</li>
+                                <li><strong>Policy Design:</strong> NIST RMF frameworks for state-level AI integration in fire response</li>
+                                <li><strong>Thought Leadership:</strong> Advocated for equitable AI access in diverse landscapes</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Wildfires are increasingly devastating (e.g., 111% above 10-year average in 2023), with AI prediction limited by local data gaps, equity issues, and lack of scalable mitigation frameworks.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Researched global trends/models; authored brief with NIST adaptations for early detection and resource targeting.</p></div>
+                            </div>
+                            <div class="flex gap-3 mb-6">
+                                <a href="assets/pb_ca_wildfires.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Policy Brief
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                                <p class="text-sm text-orange-900"><strong>Outcome:</strong> New framework proposed enhancing AI-driven prevention and response.</p>
+                            </div>
+                        </div>
 
-                <div id="project-pegasus" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pegasus Framework</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I built and scaled a 6-phase analytical playbook that standardized AI bot optimization for enterprise clients.</strong> 
-                        Transformed inconsistent analyst output into consistent, high-impact, product-relevant insights.
-                    </p>
+                        <div id="project-inworld" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">InWorld GenAI Impact Assessment</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>Proposed NIST AI RMF impact assessment for InWorld’s Output Model (voice + dialogue GenAI for gaming NPCs).</strong>
+                                Mapped global regulations, ethical risks, and stakeholder impacts into a prioritized governance strategy.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>AI Governance:</strong> NIST AI RMF + GenAI Profile application</li>
+                                <li><strong>Global Risk Mapping:</strong> EU AI Act, CCPA, China GenAI, Hiroshima Process</li>
+                                <li><strong>Ethical Risk Prioritization:</strong> Bias, deepfakes, job loss, deceptive UX</li>
+                                <li><strong>Stakeholder Synthesis:</strong> Legal, product, dev, client, performer views</li>
+                            </ul>
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">GenAI voice/dialogue NPCs risk bias, IP theft, deception, and regulatory non-compliance.</p></div>
+                                <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Authored 6-page proposal; recommended AI RMF; mapped 15+ risks to laws & ethics.</p></div>
+                            </div>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <a href="assets/inworld_ai_impact_assessment.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Proposal (PDF)
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                                <p class="text-sm text-purple-900"><strong>Outcome:</strong> Actionable governance roadmap for ethical, compliant GenAI at scale.</p>
+                            </div>
+                        </div>
 
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>AI Strategy:</strong> End-to-end process for consulting, analysis, value delivery</li>
-                        <li><strong>Root Cause Analysis:</strong> Beyond symptoms to KPI-impacting issues</li>
-                        <li><strong>Stakeholder Management:</strong> Tactical + executive alignment</li>
-                        <li><strong>Impact Forecasting:</strong> Pre/post-deployment KPI tracking + ROI</li>
-                    </ul>
+                        <div id="project-fitassist" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">FitAssist: AI Agent for Personal Trainers</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>Designed LLM-powered assistant</strong> for trainers with 100+ clients — automated check-ins, scheduling, meal plans, and FAQs — with <strong>confidence scoring, human escalation, and HIPAA compliance</strong>.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Capabilities</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li>LLM fine-tuning to mimic trainer voice (OpenAI)</li>
+                                <li>Confidence scoring + auto-escalation to human</li>
+                                <li>Edamam API + client DB for safe, allergy-aware meals</li>
+                                <li>Risk framework: bias, liability, job impact, social determinants</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <a href="assets/fitassist_proposal.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="file-text" class="w-4 h-4"></i> Full Proposal (PDF)
+                                </a>
+                            </div>
+                            <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                                <p class="text-sm text-green-900"><strong>Outcome:</strong> Ethical, scalable AI that frees trainers to coach — not message.</p>
+                            </div>
+                        </div>
 
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Insights team delivered high-value AI bot optimization recommendations, but analysts lacked deep analytics/product thinking skills—leading to inconsistent report quality and limited scaling of services.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Designed codified playbook (Pegasus Framework) + structured training program; upskilled team to deliver consistent, product-relevant insights improving client decision-making and AI service value.</p></div>
-                    </div>
-
-                    <div class="flex gap-3">
-                        <a href="assets/fw_project_pegasus.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Pegasus Framework
-                        </a>
-                    </div>
-
-                    <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                        <p class="text-sm text-green-900"><strong>Impact:</strong> 10% improvement in report quality, 5% reduction in presentation dev time, more actionable client insights.</p>
-                    </div>
-                </div>
-
-                <div id="project-cruise" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">Memorable Moments AI</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I developed an AI-driven strategy to enhance cruise guest satisfaction through hyper-personalized "memorable moments."</strong> 
-                        Backed by Mintel/Kantar research, identified high-impact AI opportunities.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>Market Research:</strong> Consumer intent, pain points, AI opportunity areas</li>
-                        <li><strong>AI Product Strategy:</strong> Interventions for destination, onboard experience</li>
-                        <li><strong>Thought Leadership:</strong> DALL·E 3 visual deck for C-suite</li>
-                    </ul>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Opportunity</h5><p class="text-sm text-slate-600">34% plan to cruise; 55% prioritize destination/onboard.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Led research, AI mapping, executive pitch.</p></div>
-                    </div>
-
-                    <div class="flex gap-3">
-                        <a href="assets/vd_cruise_memorable_moments_ai.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Full Deck
-                        </a>
-                    </div>
-					                    <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                        <p class="text-sm text-orange-900"><strong>Outcome:</strong> Proposal for innovative use of AI to enhance guest experiences.</p>
-                    </div>
-                </div>
-
-                <div id="project-invision" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">InVision VR EdTech Plan</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I co-authored a 32-page business plan for InVision Learning, a VR-based education platform delivering immersive learning for K-12 and corporate training.</strong> 
-                        Defined product, market opportunity, GTM strategy, rollout phases, revenue streams, and financial projections.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>Business Strategy:</strong> Analyzed sectors (K-12, corporate L&D), competitors, barriers, and demand drivers</li>
-                        <li><strong>Go-to-Market:</strong> Built marketing plan, partnerships, billing processes, data protocols, and market differentiators</li>
-                        <li><strong>Financial Modeling:</strong> Projected revenue streams (subscriptions, partnerships) and performance metrics for investor pitch</li>
-                        <li><strong>Action Planning:</strong> Phased rollout (R&D, soft launch, enhancements) with staff/operational details</li>
-                    </ul>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">EdTech lacks immersive VR solutions for diverse sectors; need comprehensive plan covering market use cases, barriers (e.g., adoption costs), competitors, and scalable rollout to capture growing demand in K-12/corporate training.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Co-led plan development: Defined product/ops, executed market analysis, crafted GTM/financials, and outlined phased action plan for investor-ready scalability.</p></div>
-                    </div>
-
-                    <div class="flex gap-3 mb-6">
-                        <a href="assets/bp_invision_learning.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Full Business Plan
-                        </a>
-                    </div>
-
-                    <div class="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
-                        <p class="text-sm text-purple-900"><strong>Outcome:</strong> Investor-ready blueprint with clear path to revenue; positioned InVision as VR leader in immersive education.</p>
-                    </div>
-                </div>
-                
-                <div id="project-monarch" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">Monarque Solutions (Full-Stack)</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I partnered with a consulting firm to design and build a full-stack AI solution to combat employee burnout from caregiving.</strong>
-                        <br>1. <strong>Quantify Risk:</strong> I built an <strong>AI-powered ROI Calculator</strong> to prove the significant financial risk of manager-employee disconnect.
-                        <br>2. <strong>Build Solution:</strong> I developed the <strong>AI Voice Coach</strong>, a secure, full-stack application for managers to practice empathetic conversations.
-                        <br>3. <strong>Govern Deployment:</strong> I created the complete governance suite (Impact Assessment, PRD, Data Flow) to ensure a defensible, ethical, and private-by-design deployment.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>Full-Stack AI Product Dev:</strong> From ROI modeling to a secure, deployed web app.</li>
-                        <li><strong>AI Governance (NIST RMF):</strong> Authored a full AI Impact Assessment (see link below).</li>
-                        <li><strong>Rapid Prototyping:</strong> Coded and deployed both interactive tools as a solo IC.</li>
-                    </ul>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Clients understood the <strong>idea</strong> of caregiver burnout risk but lacked tools to quantify the financial impact or scalably train managers to fix it.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Lead Strategist, Designer, and Developer. I engineered the ROI formulas, built the AI calculator, then designed, built, and wrote the governance for the AI Voice Coach solution.</p></div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-x-4 gap-y-2">
-                        <a href="https://peppy-belekoy-75b429.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
-                            <i data-lucide="external-link" class="w-4 h-4"></i> Live ROI Calculator Demo
-                        </a>
-                        <a href="httpsaivoicecoachcaregiver.netlify.app/" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
-                            <i data-lucide="external-link" class="w-4 h-4"></i> Live AI Coach Demo
-                        </a>
-                        <a href="" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> AI Impact Assessment (NIST) {Coming Soon}
-                        </a>
-                        <a href="" target="_blank" class="text-blue-600 hover:underline text-sm font-medium flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Product Requirements Doc (PRD) {Coming Soon}
-                        </a>
-                    </div>
-
-                    <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                        <p class="text-sm text-green-900"><strong>Status:</strong> Both applications are live and fully documented with a "trust-by-design" governance framework.</p>
-                    </div>
-                </div>
-
-                <div id="project-energy" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Energy Consumption Policy Brief</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I authored a policy brief analyzing AI's environmental footprint, proposing NIST RMF-adapted governance frameworks to mitigate energy risks and promote sustainable scaling.</strong> 
-                        Highlighted data center growth (from 1.9% to 4%+ of U.S. electricity) and global projections (up to 21% by 2030), advocating for regulatory resilience.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>AI Policy Research:</strong> Quantified energy/carbon impacts from data centers and LLM training</li>
-                        <li><strong>Governance Innovation:</strong> Adapted NIST RMF for sustainability mandates and efficiency benchmarks</li>
-                        <li><strong>Thought Leadership:</strong> Influenced AI labs/regulators on defensible energy strategies</li>
-                    </ul>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">AI's rapid growth drives data center energy use (176 TWh in U.S. by 2023, projected 7-12% of electricity by 2028), risking regulatory backlash and sustainability gaps without proactive frameworks.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Reseached trends/projections; authored brief with NIST-based mitigations for state-level adoption and corporate compliance.</p></div>
-                    </div>
-                    <div class="flex gap-3 mb-6">
-                        <a href="assets/pb_ca_ai_energy_problem.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Full Policy Brief
-                        </a>
-                    </div>
-                    <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                        <p class="text-sm text-orange-900"><strong>Outcome:</strong> Framework proposed to guide sustainable AI deployment.</p>
-                    </div>
-                </div>
-
-                <div id="project-wildfire" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">AI Wildfire Risk Policy Brief</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I authored a policy brief on AI's role in wildfire prediction gaps, designing NIST RMF adaptations to enable early risk flagging and defensible mitigation strategies.</strong> 
-                        Addressed escalating megafires (1.7M+ acres burned in 2023) and tech equity issues in Global South landscapes.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>Risk Mitigation:</strong> Analyzed prediction models, vegetation/climate data for proactive alerts</li>
-                        <li><strong>Policy Design:</strong> NIST RMF frameworks for state-level AI integration in fire response</li>
-                        <li><strong>Thought Leadership:</strong> Advocated for equitable AI access in diverse landscapes</li>
-                    </ul>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">Wildfires are increasingly devastating (e.g., 111% above 10-year average in 2023), with AI prediction limited by local data gaps, equity issues, and lack of scalable mitigation frameworks.</p></div>
-                        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Researched global trends/models; authored brief with NIST adaptations for early detection and resource targeting.</p></div>
-                    </div>
-                    <div class="flex gap-3 mb-6">
-                        <a href="assets/pb_ca_wildfires.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> Full Policy Brief
-                        </a>
-                    </div>
-                    <div class="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                        <p class="text-sm text-orange-900"><strong>Outcome:</strong> New framework proposed enhancing AI-driven prevention and response.</p>
-                    </div>
-                </div>
-				<div id="project-inworld" class="project-detail hidden">
-				    <h3 class="text-2xl font-semibold text-slate-800 mb-2">InWorld GenAI Impact Assessment</h3>
-				    <p class="text-slate-600 mb-6">
-				        <strong>Proposed NIST AI RMF impact assessment for InWorld’s Output Model (voice + dialogue GenAI for gaming NPCs).</strong>
-				        Mapped global regulations, ethical risks, and stakeholder impacts into a prioritized governance strategy.
-				    </p>
-				
-				    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-				    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-				        <li><strong>AI Governance:</strong> NIST AI RMF + GenAI Profile application</li>
-				        <li><strong>Global Risk Mapping:</strong> EU AI Act, CCPA, China GenAI, Hiroshima Process</li>
-				        <li><strong>Ethical Risk Prioritization:</strong> Bias, deepfakes, job loss, deceptive UX</li>
-				        <li><strong>Stakeholder Synthesis:</strong> Legal, product, dev, client, performer views</li>
-				    </ul>
-				
-				    <div class="grid md:grid-cols-2 gap-6 mb-6">
-				        <div><h5 class="font-medium text-slate-700 mb-2">Challenge</h5><p class="text-sm text-slate-600">GenAI voice/dialogue NPCs risk bias, IP theft, deception, and regulatory non-compliance.</p></div>
-				        <div><h5 class="font-medium text-slate-700 mb-2">My Role</h5><p class="text-sm text-slate-600">Authored 6-page proposal; recommended AI RMF; mapped 15+ risks to laws & ethics.</p></div>
-				    </div>
-				
-				    <div class="flex flex-wrap gap-3 mb-6">
-				        <a href="assets/inworld_ai_impact_assessment.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-				            <i data-lucide="file-text" class="w-4 h-4"></i> Full Proposal (PDF)
-				        </a>
-				    </div>
-				
-				    <div class="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
-				        <p class="text-sm text-purple-900"><strong>Outcome:</strong> Actionable governance roadmap for ethical, compliant GenAI at scale.</p>
-				    </div>
-				</div>
-				<div id="project-fitassist" class="project-detail hidden">
-				    <h3 class="text-2xl font-semibold text-slate-800 mb-2">FitAssist: AI Agent for Personal Trainers</h3>
-				    <p class="text-slate-600 mb-6">
-				        <strong>Designed LLM-powered assistant</strong> for trainers with 100+ clients — automated check-ins, scheduling, meal plans, and FAQs — with <strong>confidence scoring, human escalation, and HIPAA compliance</strong>.
-				    </p>
-				
-				    <h4 class="font-semibold text-slate-700 mb-2">Key Capabilities</h4>
-				    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-				        <li>LLM fine-tuning to mimic trainer voice (OpenAI)</li>
-				        <li>Confidence scoring + auto-escalation to human</li>
-				        <li>Edamam API + client DB for safe, allergy-aware meals</li>
-				        <li>Risk framework: bias, liability, job impact, social determinants</li>
-				    </ul>
-				
-				    <div class="flex flex-wrap gap-3 mb-6">
-				        <a href="assets/fitassist_proposal.pdf" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-				            <i data-lucide="file-text" class="w-4 h-4"></i> Full Proposal (PDF)
-				        </a>
-				    </div>
-				
-				    <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-				        <p class="text-sm text-green-900"><strong>Outcome:</strong> Ethical, scalable AI that frees trainers to coach — not message.</p>
-				    </div>
-				</div>
-                <div id="project-probono" class="project-detail hidden">
-                    <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pro Bono: AI Ethics for Non-Profits</h3>
-                    <p class="text-slate-600 mb-6">
-                        <strong>I provide pro bono AI ethics and governance advisory to non-profit AI labs and mission-driven founders.</strong> 
-                        I help them build defensible, transparent AI systems before scaling — without budget constraints.
-                    </p>
-
-                    <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
-                    <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
-                        <li><strong>AI Ethics Leadership:</strong> Lightweight governance for early-stage AI</li>
-                        <li><strong>Risk Prioritization:</strong> Focus on bias, privacy, transparency</li>
-                        <li><strong>Trusted Advisor:</strong> Board-level guidance for non-profits</li>
-                    </ul>
-					  <div class="flex flex-wrap gap-3">
-                        <a href="https://doublelucky.ai" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
-                            <i data-lucide="external-link" class="w-4 h-4"></i>doublelucky.ai
-                        </a>
-                    </div>
-                </div>
-              
+                        <div id="project-probono" class="project-detail hidden">
+                            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Pro Bono: AI Ethics for Non-Profits</h3>
+                            <p class="text-slate-600 mb-6">
+                                <strong>I provide pro bono AI ethics and governance advisory to non-profit AI labs and mission-driven founders.</strong> 
+                                I help them build defensible, transparent AI systems before scaling — without budget constraints.
+                            </p>
+                            <h4 class="font-semibold text-slate-700 mb-2">Key Skills Demonstrated</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1 mb-6">
+                                <li><strong>AI Ethics Leadership:</strong> Lightweight governance for early-stage AI</li>
+                                <li><strong>Risk Prioritization:</strong> Focus on bias, privacy, transparency</li>
+                                <li><strong>Trusted Advisor:</strong> Board-level guidance for non-profits</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://doublelucky.ai" target="_blank" class="text-blue-600 hover:underline text-sm flex items-center gap-1">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>doublelucky.ai
+                                </a>
+                            </div>
+                        </div>
+                    
+                    </div> 
+                </div> 
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
        <section id="expertise" class="page-section hidden -mx-6 px-6 py-16 md:py-24">
             <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">Expertise & Education</h2>
@@ -883,16 +895,38 @@ p { margin-bottom: 1em; }
                 </a> <BR>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-12">
+            <div class="max-w-6xl mx-auto space-y-12">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    
+<div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 reveal h-full flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                            <i data-lucide="radar" class="w-6 h-6 mr-2 text-orange-600"></i>
+                            My Expertise
+                        </h3>
+                        
+                        <div class="flex-grow flex items-center justify-center">
+                            <div style="position: relative; height: 250px; width: 100%;">
+                                <canvas id="skillsChart"></canvas>
+                            </div>
+                        </div>
 
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left" id="education-anchor">Education</h3>
-                        <div class="space-y-6">
-                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
-                                <h4 class="text-lg font-semibold text-slate-800">Master of Science, Artificial Intelligence: Management & Policy</h4>
-                                <p class="text-slate-600 mb-2">Purdue University (Expected Dec 2025)</p>
-                                
+                        <p class="text-xs text-slate-500 text-center mt-4 italic">
+                            <strong>Strategic & Technical Balance:</strong> I translate technical architecture into defensible business value, ensuring AI solutions are scalable, compliant, and aligned with C-suite objectives.
+                        </p>
+                    </div>
+
+                    <div class="reveal h-full">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 h-full">
+                            <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 mr-2 text-blue-600"></i>
+                                Education
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Master of Science</h4>
+                                <p class="font-medium text-orange-600">AI Management & Policy</p>
+                                <p class="text-slate-500 text-sm">Purdue University (Exp. Dec 2025)</p>
                                 <div class="mt-4 pt-4 border-t border-slate-200">
                                     <h5 class="text-sm font-semibold text-slate-700 mb-2">Key Coursework:</h5>
                                     <ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
@@ -907,26 +941,31 @@ p { margin-bottom: 1em; }
                                     <li>Graduate Certificate, Applied Data Analytics</li>
                                 </ul>
                             </div>
-
-                            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
-                                <h4 class="text-lg font-semibold text-slate-800">Bachelor of Science, Consumer Affairs</h4>
-                                <p class="text-slate-600">California State University-Northridge (2010)</p>
+                            
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Bachelor of Science</h4>
+                                <p class="font-medium text-slate-700">Consumer Affairs</p>
+                                <p class="text-slate-500 text-sm">California State University-Northridge (2010)</p>
                                  <ul class="list-disc list-inside text-slate-500 text-sm">
                                     <li>Minor in Marketing</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Certifications</h3>
-                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+
+                    <div class="reveal h-full">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 h-full">
+                            <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                                <i data-lucide="award" class="w-6 h-6 mr-2 text-green-600"></i>
+                                Certifications
+                            </h3>
                             <ul class="space-y-3">
-                                <li class="flex items-center gap-3">
-                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                <li class="flex items-center gap-3 opacity-75">
+                                    <i data-lucide="hourglass" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
                                     <span class="text-slate-700">AIGP (AIPP) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
                                 </li>
-                                <li class="flex items-center gap-3">
-                                    <i data-lucide="award" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
+                                <li class="flex items-center gap-3 opacity-75">
+                                    <i data-lucide="hourglass" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
                                     <span class="text-slate-700">COBIT 2019 Foundation (ISACA) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
                                 </li>
                                 <li class="flex items-center gap-3">
@@ -944,9 +983,10 @@ p { margin-bottom: 1em; }
                             </ul>
                         </div>
                     </div>
+
                 </div>
 				                
-                <div>
+                <div class="reveal">
                      <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Core Skills</h3>
                     <div class="bg-white rounded-lg shadow-md border border-slate-200 overflow-hidden">
                         <table class="min-w-full divide-y divide-slate-200 md:table-fixed">
@@ -1045,7 +1085,7 @@ p { margin-bottom: 1em; }
                 <div>
                     <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center md:text-left">Work Experience</h3>
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 reveal">
                             <span class="text-sm font-medium text-slate-500">2022 - 2024</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Manager, AI & Analytics Solutions</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Microsoft (Remote)</h5>
@@ -1054,7 +1094,7 @@ p { margin-bottom: 1em; }
                             </p>
                         </div>
                         
-                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 reveal">
                             <span class="text-sm font-medium text-slate-500">2017 - 2022</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Product Owner, Insights & Analytics</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Nuance Communications (Agoura Hills, CA)</h5>
@@ -1063,7 +1103,7 @@ p { margin-bottom: 1em; }
                             </p>
                         </div>
 
-                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 reveal">
                             <span class="text-sm font-medium text-slate-500">2010 - 2017</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Senior Manager, Consumer Research</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">J.D. Power (Westlake Village, CA)</h5>
@@ -1072,7 +1112,7 @@ p { margin-bottom: 1em; }
                             </p>
                         </div>
 
-						<div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+						<div class="bg-white p-6 rounded-lg shadow-md border border-slate-200 reveal">
                             <span class="text-sm font-medium text-slate-500">2006 - 2009</span>
                             <h4 class="text-xl font-semibold text-slate-800 mt-1">Business Operations Analyst</h4>
                             <h5 class="text-md font-medium text-slate-600 mb-2">Chase (Chatsworth, CA)</h5>
@@ -1093,7 +1133,7 @@ p { margin-bottom: 1em; }
                 Feel free to reach out via email or connect with me on LinkedIn.
             </p>
             
-            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center reveal">
                 <img src="assets/8464.jpg" 
                      alt="Pete Trujillo"
                      class="rounded-full w-24 h-24 border-4 border-white -mt-20 mb-4 shadow-lg object-cover">
@@ -1106,7 +1146,7 @@ p { margin-bottom: 1em; }
                         <i data-lucide="mail" class="w-5 h-5"></i>
                         pete.tru@gmail.com
                     </a>
-                    <a href="httpsa://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+                    <a href="https://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="cta-button bg-white text-slate-700 font-medium py-3 px-6 rounded-lg shadow-md border border-slate-200 hover:bg-slate-50 hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
                         <i data-lucide="linkedin" class="w-5 h-5"></i>
                         Connect on LinkedIn
                     </a>
@@ -1120,10 +1160,10 @@ p { margin-bottom: 1em; }
         <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p class="text-sm">&copy; 2025 Pete Trujillo. All rights reserved.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="httpsa://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://linkedin.com/in/petetru" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                 </a>
-                <a href="httpsas://github.com/petetrujillo/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://github.com/petetrujillo/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
                     <i data-lucide="github" class="w-6 h-6"></i>
                 </a>
             </div>
@@ -1145,24 +1185,132 @@ p { margin-bottom: 1em; }
             // --- Lucide Icons ---
             lucide.createIcons();
 
-            /**
-             * Shows a specific project in the detail pane and sets the active state
-             * in the sidebar.
-             */
+            /* =========================================
+               FEATURE 1: TYPEWRITER EFFECT
+            ========================================= */
+            const textToType = "AI STRATEGIST | AI GOVERNANCE | TRUST & RISK";
+            const typeSpeed = 50; // ms
+            let charIndex = 0;
+            const typeTarget = document.getElementById("typewriter-text");
+            let typeInterval;
+
+            function startTypewriter() {
+                if (!typeTarget) return;
+                
+                // Reset
+                typeTarget.innerHTML = ""; 
+                charIndex = 0;
+                if(typeInterval) clearInterval(typeInterval);
+
+                // Start typing
+                function type() {
+                    if (charIndex < textToType.length) {
+                        typeTarget.innerHTML += textToType.charAt(charIndex);
+                        charIndex++;
+                        typeInterval = setTimeout(type, typeSpeed);
+                    }
+                }
+                type();
+            }
+            // Start typing immediately
+            startTypewriter();
+
+
+            /* =========================================
+               FEATURE 2: STRATEGIC RADAR CHART
+            ========================================= */
+            let chartInstance = null;
+
+            function initChart() {
+                const ctx = document.getElementById('skillsChart');
+                // Only init if element exists and not already created
+                if(ctx && !chartInstance) {
+                    chartInstance = new Chart(ctx.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            // LABELS: The "Whole Product" view of AI
+                            labels: [
+                                ['AI Governance'],   
+                                ['Product'], 
+                                ['Tech'], 
+                                ['Risk'], 
+                                ['Data'], 
+                             
+                            ],
+                            datasets: [{
+                                label: 'Strategic Capabilities',
+                                data: [80, 90, 80, 70, 95], 
+                                fill: true,
+                                backgroundColor: 'rgba(234, 88, 12, 0.2)', // Orange-600 with opacity
+                                borderColor: 'rgba(234, 88, 12, 1)',       // Orange-600
+                                pointBackgroundColor: 'rgba(234, 88, 12, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(234, 88, 12, 1)'
+                            }]
+                        },
+                        options: {
+                            layout: {
+                                padding: 20
+                            },
+                            scales: {
+                                r: {
+                                    angleLines: { display: true, color: '#e2e8f0' }, 
+                                    grid: { color: '#e2e8f0' },
+                                    suggestedMin: 0,
+                                    suggestedMax: 100,
+                                    ticks: { display: false, stepSize: 20 },
+                                    pointLabels: {
+                                        font: { size: 11, family: "'Inter', sans-serif", weight: '600' },
+                                        color: '#334155', 
+                                        padding: 10 
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            responsive: true,
+                            maintainAspectRatio: false 
+                        }
+                    });
+                }
+            }
+
+            /* =========================================
+               FEATURE 3: SCROLL REVEAL
+            ========================================= */
+            function reveal() {
+                var reveals = document.querySelectorAll(".reveal");
+                var windowHeight = window.innerHeight;
+                var elementVisible = 20; 
+
+                reveals.forEach((element) => {
+                    var elementTop = element.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add("active");
+                    }
+                });
+            }
+            // Listener for scroll
+            window.addEventListener("scroll", reveal);
+            // Initial check
+            reveal();
+
+
+            /* =========================================
+               EXISTING LOGIC (PAGE NAV, FILTER, ETC)
+            ========================================= */
+
             function showProject(projectId, clickedLink) {
-                // Hide all project detail panes
                 projectDetailPanes.forEach(pane => {
                     pane.classList.add('hidden');
                 });
-
-                // Show the target project pane
                 const targetPane = document.getElementById('project-' + projectId);
                 if (targetPane) {
                     targetPane.classList.remove('hidden');
-                    lucide.createIcons(); // Re-render icons in the new pane
+                    lucide.createIcons();
                 }
-
-                // Update active state in sidebar
                 projectNavLinks.forEach(link => {
                     link.classList.remove('active');
                 });
@@ -1171,30 +1319,33 @@ p { margin-bottom: 1em; }
                 }
             }
             
-            /**
-             * Shows a main page section (About, Goals, etc.)
-             */
             window.showPage = function(pageId) {
-                // Hide all sections
                 pageSections.forEach(section => {
                     section.classList.add('hidden');
                 });
 
-                // Show the target section
                 const targetSection = document.getElementById(pageId);
                 if (targetSection) {
                     targetSection.classList.remove('hidden');
-                    lucide.createIcons(); // Re-render icons
+                    lucide.createIcons(); 
                     
-                    // If we are showing the 'projects' page, show the 'start' state
+                    // Specific actions based on page
+                    if (pageId === 'about') {
+                        startTypewriter();
+                    }
+                    if (pageId === 'expertise') {
+                        // Wait a tick for the div to be visible, then render chart
+                        setTimeout(initChart, 100);
+                    }
                     if (pageId === 'projects') {
                         showProject('start', null);
-                        // Also, reset active state on project links
                         projectNavLinks.forEach(link => link.classList.remove('active'));
                     }
+                    
+                    // Trigger reveal check whenever page changes
+                    setTimeout(reveal, 50); 
                 }
                 
-                // Update active state for desktop nav
                 desktopNavLinks.forEach(link => {
                     if (link.dataset.page === pageId) {
                         link.classList.add('nav-active');
@@ -1204,14 +1355,12 @@ p { margin-bottom: 1em; }
                 });
             }
 
-            // --- Mobile Menu Toggle ---
             if (mobileMenuButton) {
                 mobileMenuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                 });
             }
 
-            // --- Main Page Navigation (Header links) ---
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     const pageId = link.dataset.page;
@@ -1219,17 +1368,14 @@ p { margin-bottom: 1em; }
                     if (!link.classList.contains('project-nav-link')) {
                         e.preventDefault();
                         window.showPage(pageId);
-                        window.location.hash = pageId; // Update URL hash
+                        window.location.hash = pageId; 
                     }
-                    
-                    // Close mobile menu if open
                     if (mobileMenu) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // --- Project Sidebar Navigation ---
             projectNavLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1238,62 +1384,58 @@ p { margin-bottom: 1em; }
                 });
             });
             
-            // --- Handle Clicks from "Goals" and "Skills" pages to Projects ---
             document.querySelectorAll('.project-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     
-                    // Handle non-project links (like Purdue anchor)
                     if (!link.dataset.project) {
                         const targetId = link.getAttribute('href').substring(1);
                         const targetElement = document.getElementById(targetId);
                         if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
                         }
-                        return; // Stop here for anchor links
+                        return;
                     }
 
-                    // Handle project links
                     const projectId = link.dataset.project;
-                    
-                    // 1. Switch to the 'projects' page
                     window.showPage('projects');
-                    window.location.hash = 'projects'; // Update hash
+                    window.location.hash = 'projects';
                     
-                    // 2. Find the corresponding sidebar link
                     const sidebarLink = document.querySelector(`.project-nav-link[data-project="${projectId}"]`);
-                    
-                    // 3. Show the specific project
                     if (sidebarLink) {
                         showProject(projectId, sidebarLink);
                     }
                 });
             });
 
-            // --- Handle Hash on Page Load ---
             const currentHash = window.location.hash.substring(1);
             if (currentHash) {
                 const targetSection = document.getElementById(currentHash);
                 if (targetSection && targetSection.classList.contains('page-section')) {
                      window.showPage(currentHash);
                 } else {
-                    window.showPage('about'); // Default to 'about'
+                    window.showPage('about'); 
                 }
             } else {
-                window.showPage('about'); // Default page
+                window.showPage('about');
             }
 
-            // --- Resume Toggle Logic ---
-            const toggleBtn = document.getElementById('toggle-resume');
-            const container = document.getElementById('resume-container');
-            const chevron = document.getElementById('chevron-icon');
-
-            if (toggleBtn) { // Check if the button exists
-                toggleBtn.addEventListener('click', () => {
-                    const isHidden = container.classList.contains('hidden');
-                    container.classList.toggle('hidden', !isHidden);
-                    chevron.classList.toggle('rotate-180', isHidden);
+            const searchInput = document.getElementById('project-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase();
+                    projectNavLinks.forEach(link => {
+                        if (link.dataset.project === 'start') return;
+                        const text = link.textContent.toLowerCase();
+                        if (text.includes(term)) {
+                            link.classList.remove('hidden');
+                        } else {
+                            link.classList.add('hidden');
+                        }
+                    });
                 });
             }
         });
     </script>
+</body>
+</html>
