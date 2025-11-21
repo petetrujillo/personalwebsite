@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto">
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">Explainable AI Tutor – District View</h1>
+                    </div>
+                    <nav class="p-5">
+                        <ul class="flex space-x-6 text-gray-600">
+                            <li><a href="#overview" class="nav-link font-semibold text-blue-600 border-b-2 border-blue-600 pb-1">Overview</a></li>
+                            <li><a href="#analytics" class="nav-link hover:text-gray-900">Analytics</a></li>
+                            <li class="ml-auto"><a href="admin-portal.html" class="hover:text-gray-900 font-medium text-blue-700">Configuration Portal ↗</a></li>
+                        </ul>
+                    </nav>
+                </header>
+
+                <div id="overview" class="tab-content space-y-6">
+                    <section id="health" class="bg-white p-6 rounded-lg shadow">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">System Health</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-green-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-green-700">99.98%</div>
+                                <div class="text-sm text-green-600">System Uptime</div>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-blue-700">120ms</div>
+                                <div class="text-sm text-blue-600">Avg. API Response</div>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-red-700">0.05%</div>
+                                <div class="text-sm text-red-600">API Error Rate</div>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-yellow-700">$45.10</div>
+                                <div class="text-sm text-yellow-600">API Costs (MTD)</div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">ROI & Impact Dashboard</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Teacher Time Saved: <span class="font-medium text-green-600">1,200 hrs</span></li>
+                                <li>• Student Score Growth: <span class="font-medium text-green-600">+19%</span></li>
+                                <li>• Redundant Services Cut: <span class="font-medium text-green-600">3</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-3 text-red-600">RISK ALERTS (live)</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center p-3 bg-red-50 rounded-md">
+                                    <p>• Bias flag on Topic “AI Ethics” (p=0.03)</p>
+                                    <button class="text-sm text-blue-600 hover:underline">View</button>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-md">
+                                    <p>• Content-safety block (2 incidents)</p>
+                                    <button class="text-sm text-blue-600 hover:underline">View Log</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="analytics" class="tab-content space-y-6 hidden">
+                    <div class="bg-white p-4 rounded-lg shadow flex flex-col md:flex-row gap-4">
+                        <div>
+                            <label for="school_filter" class="text-sm font-medium text-gray-700">Filter by School:</label>
+                            <select id="school_filter" class="p-2 border rounded-md mt-1 text-sm">
+                                <option value="all">All Schools</option>
+                                <option value="lincoln">Lincoln Middle</option>
+                                <option value="washington">Washington Middle</option>
+                                <option value="stark">Stark School</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="date_filter" class="text-sm font-medium text-gray-700">Filter by Date:</label>
+                            <select id="date_filter" class="p-2 border rounded-md mt-1 text-sm">
+                                <option value="mtd">This month to date</option>
+                                <option value="day">Last 1 day</option>
+                                <option value="week">This week</option>
+                                <option value="last_week">Prior week</option>
+                                <option value="3_month">Last 3 months</option>
+                                <option value="semester">This semester</option>
+                                <option value="year">This school year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Score Trends</h3>
+                            <div id="score_trend_div" class="h-64 w-full"></div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Adoption Trends</h3>
+                            <div id="adoption_trend_div" class="h-64 w-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">Teacher Adoption & Engagement</h3>
+                            <div id="adoption_pie_div" class="h-64 w-full relative"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow mb-6">
+                        <h3 class="font-semibold text-gray-900 mb-3">Curriculum Hotspots by School</h3>
+                        <div id="hotspot_matrix_div" class="w-full"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Load Google Charts (removed 'controls')
+        google.charts.load('current', {'packages':['corechart', 'table']});
+        google.charts.setOnLoadCallback(drawOverviewCharts);
+
+        var analyticsDrawn = false; // Flag to prevent re-drawing
+
+        function drawOverviewCharts() {
+            // Placeholder for any charts on the overview tab
+        }
+
+        // --- Draw functions for Analytics Tab ---
+        function drawAnalyticsCharts() {
+            if (analyticsDrawn) return; // Only draw once
+            console.log("Drawing analytics charts for the first time...");
+
+            // Draw all charts
+            drawScoreTrendChart();
+            drawAdoptionTrendChart();
+            drawAdoptionPieChart();
+            drawHotspotMatrix();
+            
+            analyticsDrawn = true;
+        }
+
+        // 1. Score Trend Chart
+        function drawScoreTrendChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Day', 'Average Final Score'],
+                ['9/1', 63.2], ['9/3', 60.5], ['9/5', 62.0],
+                ['9/7', 59.0], ['9/9', 62.5], ['9/11', 63.0],
+                ['9/13', 58.5], ['9/15', 59.0], ['9/17', 61.8],
+                ['9/19', 58.0], ['9/21', 60.0], ['9/23', 59.0],
+                ['9/25', 62.8], ['9/27', 59.5], ['9/29', 61.0]
+            ]);
+            
+            var options = {
+                legend: 'none',
+                vAxis: { title: 'Average Score', viewWindow: { min: 58, max: 64 } },
+                hAxis: { title: 'Date' },
+                colors: ['#3b82f6'],
+                pointSize: 7,
+                trendlines: { 0: { type: 'linear', color: '#4b5563', lineWidth: 2, opacity: 0.8, pointSize: 0 } },
+                chartArea: { width: '85%', height: '70%' }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById('score_trend_div'));
+            chart.draw(data, options);
+        }
+
+        // 2. Adoption Trend Chart
+        function drawAdoptionTrendChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Day', 'Average Daily Users'],
+                ['9/1', 135], ['9/3', 172], ['9/5', 158],
+                ['9/7', 160], ['9/9', 170], ['9/11', 165],
+                ['9/13', 171], ['9/15', 160], ['9/17', 168],
+                ['9/19', 158], ['9/21', 165], ['9/23', 162],
+                ['9/25', 169], ['9/27', 170], ['9/29', 172]
+            ]);
+
+            var options = {
+                legend: 'none',
+                vAxis: { title: 'Average Daily Users', viewWindow: { min: 100 } },
+                hAxis: { title: 'Date' },
+                colors: ['#3b82f6'],
+                areaOpacity: 0.4,
+                chartArea: { width: '85%', height: '70%' }
+            };
+            var chart = new google.visualization.AreaChart(document.getElementById('adoption_trend_div'));
+            chart.draw(data, options);
+        }
+        
+        // 3. Adoption Pie Chart
+        function drawAdoptionPieChart() {
+            var pieData = google.visualization.arrayToDataTable([
+                ['Status', 'Classes'],
+                ['Classes Actively Engaged', 10],
+                ['Classes not Using tool', 2]
+            ]);
+            var pieOptions = {
+                pieHole: 0.4,
+                legend: { position: 'right', alignment: 'center' },
+                pieSliceText: 'none',
+                colors: ['#0ea5e9', '#dc2626'],
+                chartArea: { width: '90%', height: '80%' }
+            };
+            
+            var chart = new google.visualization.PieChart(document.getElementById('adoption_pie_div'));
+
+            google.visualization.events.addListener(chart, 'ready', function () {
+                var chartContainer = document.getElementById('adoption_pie_div');
+                var oldLabel = chartContainer.querySelector('.pie-label');
+                if (oldLabel) oldLabel.remove();
+                
+                var text = document.createElement('div');
+                text.innerHTML = '<div class="text-3xl font-bold text-gray-800">158.5</div><div class="text-sm text-gray-600">Avg Daily Users</div>';
+                text.className = 'pie-label absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none';
+                chartContainer.appendChild(text);
+            });
+            chart.draw(pieData, pieOptions);
+        }
+
+        // 4. Hotspot Matrix Table
+        function drawHotspotMatrix() {
+            var matrixData = new google.visualization.DataTable();
+            matrixData.addColumn('string', 'School');
+            matrixData.addColumn('number', 'AI Bias');
+            matrixData.addColumn('number', 'Neural Networks');
+            matrixData.addColumn('number', 'Prompt Engineering');
+            matrixData.addColumn('number', 'AI Ethics');
+            matrixData.addRows([
+                ['Lincoln Middle', 55, 62, 85, 61],
+                ['Washington Middle', 68, 71, 75, 70],
+                ['Stark School', 42, 51, 65, 50]
+            ]);
+            var formatter = new google.visualization.ColorFormat();
+            formatter.addRange(0, 50, 'black', '#fecaca');
+            formatter.addRange(50, 65, 'black', '#fee2e2');
+            formatter.addRange(65, 80, 'black', '#dbeafe');
+            formatter.addRange(80, 100, 'black', '#bfdbfe');
+            formatter.format(matrixData, 1);
+            formatter.format(matrixData, 2);
+            formatter.format(matrixData, 3);
+            formatter.format(matrixData, 4);
+            
+            var table = new google.visualization.Table(document.getElementById('hotspot_matrix_div'));
+            table.draw(matrixData, {allowHtml: true, showRowNumber: false, width: '100%', height: '100%'});
+        }
+
+        // --- Tab Switching Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.href.includes('admin-portal.html')) return;
+                    
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    
+                    navLinks.forEach(navLink => {
+                        if (!navLink.href.includes('admin-portal.html')) {
+                            navLink.classList.remove('font-semibold', 'text-blue-600', 'border-b-2', 'border-blue-600', 'pb-1');
+                            navLink.classList.add('hover:text-gray-900');
+                        }
+                    });
+                    link.classList.add('font-semibold', 'text-blue-600', 'border-b-2', 'border-blue-600', 'pb-1');
+                    
+                    tabContents.forEach(tab => {
+                        if (tab.id === targetId) {
+                            tab.classList.remove('hidden');
+                        } else {
+                            tab.classList.add('hidden');
+                        }
+                    });
+
+                    if (targetId === 'analytics') {
+                        drawAnalyticsCharts();
+                    }
+                });
+            });
+        });
+        
+        // Redraw charts on window resize
+        window.addEventListener('resize', () => {
+            if (!document.getElementById('analytics').classList.contains('hidden')) {
+                analyticsDrawn = false; // Force a redraw
+                drawAnalyticsCharts();
+            }
+        });
+
+    </script>
+
+</body>
+</html>

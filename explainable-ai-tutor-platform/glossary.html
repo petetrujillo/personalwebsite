@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Glossary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300"><span>🏠</span><span>Home Hub</span></a></li>
+                        <li class="pt-3 border-t border-gray-700"><a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a></li>
+                        <li class="pt-3 border-t border-gray-700"><a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a></li>
+                        <li class="pt-3 border-t border-gray-700"><a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a></li>
+                        <li class="pt-3 border-t border-gray-700"><a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300"><strong>Note:</strong> Navigation pane for portfolio visualization.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">Parent Glossary</h1>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-gray-600">Here are plain-language definitions for terms you'll see on the dashboard.</p>
+                    </div>
+                </header>
+
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <ul class="space-y-6">
+                        <li>
+                            <h3 class="text-lg font-semibold text-gray-900">Conceptual Gap</h3>
+                            <p class="mt-1 text-gray-700">A key insight that identifies when a student knows "what" to answer but not "why." It flags cases where a student gives a factually correct answer (high Correctness score) but provides a weak or confusing explanation (low Explanation Quality score).</p>
+                        </li>
+                        
+                        <li>
+                            <h3 class="text-lg font-semibold text-gray-900">Explanation Quality Score</h3>
+                            <p class="mt-1 text-gray-700">This evaluates how well the student explains their reasoning. It looks for clarity, logical reasoning, and original thought, not just memorized facts.</p>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-semibold text-gray-900">Correctness Score</h3>
+                            <p class="mt-1 text-gray-700">This evaluates if a student's answer is factually correct when compared to the approved lesson materials.</p>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-semibold text-gray-900">AI Bias</h3>
+                            <p class="mt-1 text-gray-700">If the data used to teach an AI is unfair, incomplete, or reflects human biases, the AI will also produce unfair results.</p>
+                        </li>
+
+                        <li>
+                            <h3 class="text-lg font-semibold text-gray-900">AI Hallucination</h3>
+                            <p class="mt-1 text-gray-700">Sometimes, AI models can confidently state things that are completely wrong or made up. This is why all answers are based on approved school content only.</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

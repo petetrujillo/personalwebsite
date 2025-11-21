@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    
+    <style>
+        /* Chat styles for the static demo */
+        .chat-history {
+            height: 40vh; 
+            padding: 0.75rem; 
+            overflow-y: auto;
+            display: flex; flex-direction: column; gap: 1rem;
+            background-color: #ffffff; border-bottom: 1px solid #e5e7eb;
+        }
+        .chat-message {
+            max-width: 80%; 
+            padding: 0.75rem; 
+            border-radius: 1.25rem; 
+            line-height: 1.4;
+            white-space: pre-wrap;
+            font-size: 0.8rem;
+        }
+        .user-message {
+            align-self: flex-end; background-color: #3b82f6; color: white;
+        }
+        .bot-message {
+            align-self: flex-start; background-color: #e5e7eb; color: #1f2937;
+        }
+        .loading-dots { display: flex; align-items: center; }
+        .loading-dot { 
+            width: 0.4rem; height: 0.4rem; background-color: #4b5563; 
+            border-radius: 50%; margin: 0 0.15rem; 
+            animation: bounce 0.6s infinite alternate; 
+        }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-0.3rem); } }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-full mx-auto">
+                
+                <header class="grid grid-cols-3 md:grid-cols-6 gap-4 mb-6">
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Lessons</div>
+                        <div class="text-2xl font-bold text-gray-900">13/15</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Topics Mastered</div>
+                        <div class="text-2xl font-bold text-gray-900">7</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Average Score</div>
+                        <div class="text-2xl font-bold text-gray-900">75</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Streak</div>
+                        <div class="text-2xl font-bold text-gray-900">5 Days 🔥</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Total XP</div>
+                        <div class="text-2xl font-bold text-gray-900">1,240</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow text-center">
+                        <div class="text-sm text-gray-500">Rank</div>
+                        <div class="text-2xl font-bold text-gray-900">#12</div>
+                    </div>
+                </header>
+
+                <div class="bg-white p-4 rounded-lg shadow mb-6"> <h3 class="font-semibold text-gray-900 mb-2">My Badges</h3> <div class="flex overflow-x-auto space-x-3 pb-2"> <div class="flex-shrink-0 w-28 text-center p-2 bg-gray-50 rounded-lg border"> <div class="text-2xl">✍️</div> <div class="font-semibold text-xs mt-0.5">Prompt Prodigy</div> </div>
+                        
+                        <div class="flex-shrink-0 w-28 text-center p-2 bg-gray-50 rounded-lg border">
+                            <div class="text-2xl">⚖️</div>
+                            <div class="font-semibold text-xs mt-0.5">Ethical Engineer</div>
+                        </div>
+                        
+                        <div class="flex-shrink-0 w-28 text-center p-2 bg-blue-50 rounded-lg border border-blue-200">
+                            <div class="text-2xl">💡</div>
+                            <div class="font-semibold text-xs mt-0.5">The Explainer</div>
+                        </div>
+                        
+                        <div class="flex-shrink-0 w-28 text-center p-2 bg-blue-50 rounded-lg border border-blue-200">
+                            <div class="text-2xl">🧐</div>
+                            <div class="font-semibold text-xs mt-0.5">Curious Mind</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-6 lg:items-start">
+
+                    <div class="w-full lg:w-2/5 flex flex-col gap-6">
+                        
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-2">My Journey</h3>
+                            <p class="text-xs text-gray-500 mb-2">Explanation vs. Correctness Scores</p>
+                            <div id="stacked_area_chart_div" class="h-64 w-full"></div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-900 mb-3">My Skills Map</h3>
+                            
+                            <div class="h-64 w-full">
+                                <canvas id="radar_chart_div" class="w-full h-full"></canvas>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="w-full lg:w-3/5">
+                        
+                        <div class="bg-white rounded-lg shadow overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-center p-4 border-b">
+                                <h3 class="font-semibold text-gray-900">AI Tutor Chatbot (Static Demo)</h3>
+                                <a href="https://ai-tutor-demo-a6cs.onrender.com/" target="_blank" class="text-sm text-blue-600 font-medium hover:underline">
+                                    Live Demo ↗
+                                </a>
+                           </div>
+                           
+                           <div id="chatHistory" class="chat-history">
+                                <div class="chat-message bot-message">...relates to being accurate... Next time, let's focus on defining Precision... Keep up the great work!</div>
+                                <div class="chat-message bot-message">Great, let's move on!</div>
+                                <div class="chat-message bot-message">What is the Clustering?</div>
+                                <div class="chat-message user-message">Clustering is a machine learning concept where data is group by similarity for case of data processing...</div>
+                                <div class="chat-message bot-message loading-dots">
+                                    <div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div>
+                                </div>
+                                <div class="chat-message bot-message">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <strong class="text-base">Final Score: 93/100</strong>
+                                        
+                                        <span title="Flag for Review" class="bg-red-100 text-red-700 rounded-full h-8 w-8 flex items-center justify-center cursor-pointer hover:bg-red-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                                <path d="M3.5 2.75a.75.75 0 0 0-1.5 0v14.5a.75.75 0 0 0 1.5 0v-1.5h10.25a.75.75 0 0 0 .75-.75V3.5a.75.75 0 0 0-.75-.75H3.5Z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <strong class="text-xs">###Evaluation for "Clustering"###</strong><br>
+                                    <strong class="text-xs">Correctness: 45/50</strong> - Your definition captures the core purpose of clustering...<br>
+                                    <strong class="text-xs">Explanation Quality: 48/50</strong> - This is an excellent explanation! Using the terms "ease of data processing"...<br>
+                                    <strong class="text-xs">Engagement Bonus: None</strong>
+                                </div>
+                                 <div class="chat-message bot-message">Great, let's move on!</div>
+                                 <div class="chat-message bot-message">What is the Deepfake?</div>
+                           </div>
+                           
+                           <div class="flex p-4 bg-gray-50 border-t gap-2">
+                               <input type="text" placeholder="Type your answer..." class="flex-grow border-radius-1.25rem border border-gray-300 p-2 rounded-full px-4 bg-gray-200" disabled />
+                               <button class="bg-gray-400 text-white px-6 py-2 rounded-full font-semibold cursor-not-allowed">Send</button>
+                           </div>
+                        </div> 
+                        
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <h3 class="font-semibold text-gray-900 mb-3">My Recent Achievements</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center gap-3">
+                                        <span class="text-2xl">🏅</span>
+                                        <span class="text-gray-700">Mastered: Bias</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="text-2xl">🏅</span>
+                                        <span class="text-gray-700">Mastered: Prompts</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="text-2xl">📈</span>
+                                        <span class="text-gray-700">Improved Regulation Score!</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <h3 class="font-semibold text-gray-900 mb-3">My Next Challenges</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex justify-between items-center">
+                                        <span>Zero Shot</span>
+                                        <button class="text-sm bg-blue-500 text-white px-4 py-1 rounded-full font-semibold">Launch</button>
+                                    </li>
+                                    <li class="flex justify-between items-center">
+                                        <span>Neural Networks</span>
+                                        <button class="text-sm bg-blue-500 text-white px-4 py-1 rounded-full font-semibold">Launch</button>
+                                    </li>
+                                    <li class="flex justify-between items-center">
+                                        <span>Ethical AI</span>
+                                        <button class="text-sm bg-blue-500 text-white px-4 py-1 rounded-full font-semibold">Launch</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <script typetext="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        let radarChart = null;  // Global to track/destroy on resize
+
+        function drawCharts() {
+            drawStackedAreaChart();
+            drawSkillsBarChart(); // Renamed function for clarity
+        }
+
+        // 1. Draw Stacked Area Chart ("My Journey")
+        function drawStackedAreaChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Day');
+            data.addColumn('number', 'Explanation');
+            data.addColumn('number', 'Correctness'); // Stacked on top
+
+            data.addRows([
+                [1, 35, 50], [2, 65, 55], [3, 62, 58], [4, 40, 58], [5, 50, 48],
+                [6, 75, 75], [7, 50, 45], [8, 60, 60], [9, 78, 75], [10, 68, 60],
+                [11, 65, 65], [12, 68, 62], [13, 88, 90], [14, 28, 55], [15, 62, 65],
+                [16, 60, 60], [17, 58, 55], [18, 60, 60], [19, 75, 70], [20, 72, 65],
+                [21, 68, 60], [22, 65, 65], [23, 55, 40], [24, 52, 40], [25, 55, 45],
+                [26, 48, 55], [27, 85, 75], [28, 70, 65], [29, 60, 80], [30, 48, 50]
+            ]);
+
+            var options = {
+                isStacked: true,
+                legend: { position: 'top', alignment: 'center' },
+                colors: ['#89cff0', '#00008b'], // Light Blue and Dark Blue
+                vAxis: { 
+                    title: 'Score',
+                    viewWindow: { min: 0, max: 200 } 
+                },
+                hAxis: { title: 'Day' },
+                chartArea: { width: '85%', height: '70%' },
+                areaOpacity: 0.8
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('stacked_area_chart_div'));
+            chart.draw(data, options);
+        }
+
+// === 2. Draw Skills Map (as a Radar Chart using Chart.js) ===
+function drawSkillsBarChart() {
+    var chartData = [
+        ['AI Reg', 78], ['Bias', 92], ['Concept Drift', 80],
+        ['Data Aug', 60], ['Ethical AI', 88], ['Explainability', 95],
+        ['Few-shot', 75], ['Model Comp', 68], ['Model Drift', 82],
+        ['Neural Nets', 55], ['Overfitting', 60], ['Prompt Eng', 85],
+        ['Reinforcement', 90], ['Testing Data', 65], ['Tokenization', 70],
+        ['Transfer', 75], ['Validation', 58], ['Zero-shot', 62]
+    ];
+
+    // Extract labels and data for Chart.js
+    var labels = chartData.map(row => row[0]);
+    var scores = chartData.map(row => row[1]);
+
+    var ctx = document.getElementById('radar_chart_div').getContext('2d');
+    
+    // Destroy old chart if exists (for resize)
+    if (radarChart) {
+        radarChart.destroy();
+    }
+    
+    radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'My Score',
+                data: scores,
+                backgroundColor: 'rgba(249, 115, 22, 0.2)', // Semi-transparent orange fill
+                borderColor: '#f97316', // Orange border
+                borderWidth: 2,
+                pointBackgroundColor: '#f97316',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#f97316'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Allows it to fill the container
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 20, // Steps of 20 for 0-100 scale
+                        font: {
+                            size: 10 // Smaller font for ticks to fit
+                        }
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 10 // Smaller font for labels to prevent overlap
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false // Hide legend if not needed
+                }
+            }
+        }
+    });
+}
+        
+        // Redraw charts on window resize
+        window.addEventListener('resize', drawCharts);
+    </script>
+
+</body>
+
+</html>

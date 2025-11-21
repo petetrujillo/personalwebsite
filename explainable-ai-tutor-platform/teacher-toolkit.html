@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto">
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">Teacher Toolkit: Period 3</h1>
+                        </div>
+                    <nav class="p-5">
+                        <ul class="flex space-x-6 text-gray-600">
+                            <li><a href="#disputes" class="font-semibold text-blue-600 border-b-2 border-blue-600 pb-1">Dispute Queue (3)</a></li>
+                            <li><a href="#kb" class="hover:text-gray-900">My Knowledge Base</a></li>
+                            <li><a href="#settings" class="hover:text-gray-900">Lesson Settings</a></li>
+                        </ul>
+                    </nav>
+                </header>
+
+                <section id="disputes" class="bg-white p-6 rounded-lg shadow mb-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Dispute / Praise / Feedback Queue</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="p-3 text-left font-medium text-gray-600">Student</th>
+                                    <th class="p-3 text-left font-medium text-gray-600">Question</th>
+                                    <th class="p-3 text-left font-medium text-gray-600">AI Score</th>
+                                    <th class="p-3 text-left font-medium text-gray-600">Student Reason</th>
+                                    <th class="p-3 text-left font-medium text-gray-600">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3">Maya (S00019)</td>
+                                    <td class="p-3">"What is AI Bias?"</td>
+                                    <td class="p-3"><span class="font-bold text-orange-600">62</span></td>
+                                    <td class="p-3">"I thought I explained the 'why' part..."</td>
+                                    <td class="p-3 space-x-2">
+                                        <button class="text-sm text-blue-600 hover:underline">Review</button>
+                                        <button class="text-sm text-gray-500 hover:underline">Dismiss</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Steve (S00004)</td>
+                                    <td class="p-3">"What are AI 'hallucinations'?"</td>
+                                    <td class="p-3"><span class="font-bold text-red-600">25</span></td>
+                                    <td class="p-3">"The AI was rude."</td>
+                                     <td class="p-3 space-x-2">
+                                        <button class="text-sm text-blue-600 hover:underline">Review</button>
+                                        <button class="text-sm text-gray-500 hover:underline">Dismiss</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Leo (S00008)</td>
+                                    <td class="p-3">"What is Prompt Engineering?"</td>
+                                    <td class="p-3"><span class="font-bold text-green-600">91</span></td>
+                                    <td class="p-3">(Praise) "This was a great question!"</td>
+                                     <td class="p-3 space-x-2">
+                                        <button class="text-sm text-blue-600 hover:underline">View</button>
+                                        <button class="text-sm text-gray-500 hover:underline">Dismiss</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="font-semibold text-gray-900 mb-3 mt-8">LIVE AI-TUTOR (Mockup)</h3>
+                    <div class="border rounded-lg p-4 bg-gray-50">
+                        <div class="chat-message bot-message bg-gray-200 text-gray-800 p-3 rounded-lg max-w-md mb-2">
+                            Bot: “What are AI 'hallucinations'?”
+                        </div>
+                        <div class="chat-message user-message bg-blue-100 text-blue-800 p-3 rounded-lg max-w-md ml-auto mb-4">
+                            Student: "its when the ai gets confused and its like its on drugs and says crazy things"
+                        </div>
+                        <hr class="my-4">
+                        <div class="bg-white p-4 rounded-md border">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold">Score: 25 <span class="text-sm font-normal text-blue-600 cursor-pointer">[?]</span></h4>
+                                <div class="flex space-x-2">
+                                    <button class="text-sm bg-yellow-400 text-yellow-900 px-3 py-1 rounded font-medium">Override Score</button>
+                                    <button class="text-sm bg-red-500 text-white px-3 py-1 rounded font-medium">Flag for Review</button>
+                                    <button class="text-sm bg-gray-200 px-3 py-1 rounded font-medium">Add Note</button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-700 mb-2"><span class="font-semibold">Correctness 20 | Explanation 5 | Bonus 0</span></p>
+                            <p class="text-sm text-orange-700 bg-orange-50 p-2 rounded">Plain-lang: “Vague and imprecise. No causal reasoning.”</p>
+                        </div>
+                    </div>
+                    </section>
+
+                <section id="kb" class="bg-white p-6 rounded-lg shadow mb-6 hidden">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">My Knowledge Base</h2>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Upload Custom Lesson File (.txt, .pdf)</label>
+                        <p class="text-xs text-gray-500 mb-1">Files uploaded here are only for your classes.</p>
+                        <input type="file" class="mt-2">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">My Active Lesson Files</h3>
+                    <ul class="divide-y divide-gray-200">
+                        <li class="py-2 flex justify-between items-center">
+                            <span>My_Custom_Ethics_Notes.txt</span>
+                            <button class="text-sm text-red-600 hover:underline">Remove</button>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="settings" class="bg-white p-6 rounded-lg shadow mb-6 hidden">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Lesson & Dashboard Settings</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="text-base font-medium text-gray-900">Dashboard Settings</label>
+                            <div class="mt-2 flex items-center">
+                                <input id="anonymize" name="anonymize" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                <label for="anonymize" class="ml-2 block text-sm text-gray-700">Anonymization Toggle ("Hide Names")</label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="personality" class="block text-base font-medium text-gray-900">Tutor Personality Selector</label>
+                            <select id="personality" name="personality" class="mt-2 block w-full md:w-1/2 p-2 border border-gray-300 rounded-md shadow-sm">
+                                <option>Standard</option>
+                                <option>Supportive & Encouraging</option>
+                                <option>Enthusiastic & Fun</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="scoring-weight" class="block text-base font-medium text-gray-900">Lesson Scoring Configuration</label>
+                            <p class="text-sm text-gray-500">Adjust scoring weights for "AI Literacy" module</p>
+                            <div class="mt-2">
+                                <label class="block text-sm font-medium text-gray-700">Correctness (Weight: 50%)</label>
+                                <input type="range" min="0" max="100" value="50" class="w-full md:w-1/2">
+                            </div>
+                            <div class="mt-2">
+                                <label class="block text-sm font-medium text-gray-700">Explanation Quality (Weight: 50%)</label>
+                                <input type="range" min="0" max="100" value="50" class="w-full md:w-1/2">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-8 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold">Save Settings</button>
+                </section>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const navLinks = document.querySelectorAll('header nav a');
+                        const sections = document.querySelectorAll('body > div > div.flex-1 > div > section');
+
+                        function updateView() {
+                            const hash = window.location.hash || '#disputes';
+                            
+                            navLinks.forEach(link => {
+                                if (link.getAttribute('href') === hash) {
+                                    link.classList.add('font-semibold', 'text-blue-600', 'border-b-2', 'border-blue-600', 'pb-1');
+                                    link.classList.remove('hover:text-gray-900');
+                                } else {
+                                    link.classList.remove('font-semibold', 'text-blue-600', 'border-b-2', 'border-blue-600', 'pb-1');
+                                    link.classList.add('hover:text-gray-900');
+                                }
+                            });
+
+                            sections.forEach(section => {
+                                if (section.id === hash.substring(1)) {
+                                    section.classList.remove('hidden');
+                                } else {
+                                    section.classList.add('hidden');
+                                }
+                            });
+                        }
+
+                        navLinks.forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                // Don't prevent default, let the hash change
+                                setTimeout(updateView, 0); // Update after hash has changed
+                            });
+                        });
+
+                        // Initial load
+                        updateView();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

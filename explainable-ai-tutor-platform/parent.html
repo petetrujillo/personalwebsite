@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <div class="w-64 bg-gray-800 text-white p-5 flex-shrink-0 flex flex-col">
+            <div>
+                <h2 class="text-xl font-semibold mb-6 text-gray-100">Persona Switcher</h2>
+                <nav>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="flex items-center space-x-2 text-gray-300 hover:text-blue-300">
+                            <span>🏠</span>
+                            <span>Home Hub</span>
+                        </a></li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="admin.html" class="font-semibold text-white hover:text-blue-300">Admin (Anna)</a>
+                            <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="admin-portal.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Config Portal</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="teacher.html" class="font-semibold text-white hover:text-blue-300">Teacher (Tom)</a>
+                             <ul class="pl-4 mt-1 space-y-1">
+                                <li><a href="teacher-toolkit.html" class="text-sm text-gray-300 hover:text-blue-300">↳ Teacher Toolkit</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="parent.html" class="font-semibold text-white hover:text-blue-300">Parent (Paula)</a>
+                        </li>
+
+                        <li class="pt-3 border-t border-gray-700">
+                            <a href="student.html" class="font-semibold text-white hover:text-blue-300">Student (Steve)</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="mt-auto">
+                <div class="bg-gray-700 p-3 rounded-lg">
+                    <p class="text-xs text-gray-300">
+                        <strong>Note:</strong> This navigation pane is for demo purposes to allow easy switching between personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="max-w-7xl mx-auto">
+                <header class="bg-white shadow rounded-lg mb-6">
+                    <div class="flex justify-between items-center p-5 border-b">
+                        <h1 class="text-2xl font-bold text-gray-800">My Child: Steve (7B) – AI Literacy Module</h1>
+                    </div>
+                    <nav class="p-5">
+                        <ul class="flex space-x-6 text-gray-600">
+                            <li><a href="#" class="font-semibold text-blue-600 border-b-2 border-blue-600 pb-1">Progress</a></li>
+                            <li><a href="glossary.html" class="hover:text-gray-900 font-medium text-blue-700">Parent Glossary</a></li>
+                        </ul>
+                    </nav>
+                </header>
+
+                <div class="bg-white p-4 rounded-lg shadow mb-6 flex flex-col md:flex-row gap-4">
+                    <div>
+                        <label for="date_filter" class="text-sm font-medium text-gray-700">Filter by Date:</label>
+                        <select id="date_filter" class="p-2 border rounded-md mt-1 text-sm">
+                            <option value="mtd">This month to date</option>
+                            <option value="day">Last 1 day</option>
+                            <option value="week">This week</option>
+                            <option value="last_week">Prior week</option>
+                            <option value="3_month">Last 3 months</option>
+                            <option value="semester">This semester</option>
+                            <option value="year">This school year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg shadow mb-6" role="alert">
+                    <h3 class="font-bold">Safety Alert (1 new)</h3>
+                    <p class="text-sm">An emotional red flag (related to "bullying") was detected in Steve's session on 11/10/2025. A notification has been sent to the school counselor. <a href="#" class="font-semibold underline hover:text-red-800">View Transcript</a></p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow text-center">
+                        <h3 class="font-semibold text-gray-900 mb-2">Student Average</h3>
+                        <p class="text-5xl font-bold text-blue-600">62</p>
+                        <p class="text-sm text-gray-500">Average Final Score</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow text-center">
+                        <h3 class="font-semibold text-gray-900 mb-2">Class Average</h3>
+                        <p class="text-5xl font-bold text-gray-700">60.7</p>
+                        <p class="text-sm text-gray-500">Average Final Score</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="font-semibold text-gray-900 mb-3">Best Scoring Topics</h3>
+                        <ul class="space-y-2">
+                            <li><span class="font-medium text-gray-700">Prompt Engineering</span> <span class="font-bold text-green-600 float-right">91%</span></li>
+                            <li><span class="font-medium text-gray-700">Generative AI</span> <span class="font-bold text-green-600 float-right">89%</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="font-semibold text-gray-900 mb-3">Worst Scoring Topics</h3>
+                        <ul class="space-y-2">
+                            <li><span class="font-medium text-gray-700">AI Bias</span> <span class="font-bold text-orange-600 float-right">62%</span></li>
+                            <li><span class="font-medium text-gray-700">Neural Networks</span> <span class="font-bold text-red-600 float-right">41%</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow mb-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">Average Score by Day</h3>
+                    <div id="line_chart_div" class="w-full h-80"></div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow mb-6">
+                    <h3 class="font-semibold text-gray-900 mb-4">Topic Details (Steve's Scores)</h3>
+                    <div id="heatmap_table_div" class="w-full"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'table']});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        drawLineChart();
+        drawHeatmapTable();
+      }
+
+      function drawLineChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Day');
+        data.addColumn('number', 'Total Time Taken');
+        data.addColumn('number', 'Average Final Score');
+        
+        data.addRows([
+          ['1', 220, 30], ['2', 300, 32], ['3', 310, 28],
+          ['4', 300, 22], ['5', 280, 42], ['6', 680, 45],
+          ['7', 180, 20], ['8', 420, 35], ['9', 380, 34],
+          ['10', 400, 32], ['11', 310, 28], ['12', 170, 62],
+          ['13', 280, 40], ['14', 700, 12], ['15', 380, 25],
+          ['16', 320, 35], ['17', 420, 28], ['18', 300, 41],
+          ['19', 420, 38], ['20', 400, 32], ['21', 220, 30],
+          ['22', 380, 30], ['23', 350, 52], ['24', 150, 40],
+          ['25', 180, 45], ['26', 150, 48], ['27', 140, 35],
+          ['28', 50, 48], ['29', 200, 40], ['30', 150, 32]
+        ]);
+
+        var options = {
+          legend: { position: 'top', alignment: 'start' },
+          series: {
+            0: { targetAxisIndex: 0, color: '#3b82f6' }, 
+            1: { targetAxisIndex: 1, color: '#1e3a8a' } 
+          },
+          vAxes: {
+            0: { title: 'Time Taken (sec)', viewWindow: { min: 0 } },
+            1: { title: 'Average Score', viewWindow: { min: 0, max: 100 } }
+          },
+          hAxis: {
+            title: 'Day'
+          },
+          chartArea: { width: '85%', height: '70%' },
+          pointSize: 5
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
+        chart.draw(data, options);
+      }
+      
+      function drawHeatmapTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Question');
+        data.addColumn('number', 'Attempts');
+        data.addColumn('number', 'Best Final Score');
+        data.addColumn('number', 'Average Final Score');
+        data.addColumn('number', 'Average Explanation');
+        data.addColumn('number', 'Average Correctness');
+
+        data.addRows([
+            ['AI Regulation', 2, 69.82, 58.51, 69.01, 51.50],
+            ['Bias', 4, 96.90, 72.85, 74.49, 71.75],
+            ['Concept Drift', 1, 68.33, 68.33, 70.32, 67.00],
+            ['Ethical AI', 2, 66.36, 52.46, 48.65, 55.00],
+            ['Explainability', 6, 92.46, 59.20, 62.24, 57.17],
+            ['Few-shot Learning', 3, 99.09, 58.68, 65.19, 54.33],
+            ['Model Drift', 5, 92.94, 64.22, 62.15, 65.60],
+            ['Neural Networks', 5, 78.28, 40.68, 46.49, 36.80]
+        ]);
+
+        var scoreFormatter = new google.visualization.ColorFormat();
+        scoreFormatter.addRange(0, 50, 'black', '#fecaca'); 
+        scoreFormatter.addRange(50, 60, 'black', '#fee2e2');
+        scoreFormatter.addRange(70, 90, 'black', '#dbeafe');
+        scoreFormatter.addRange(90, 101, 'black', '#bfdbfe');
+
+        scoreFormatter.format(data, 2); 
+        scoreFormatter.format(data, 3); 
+        scoreFormatter.format(data, 4); 
+        scoreFormatter.format(data, 5); 
+
+        var table = new google.visualization.Table(document.getElementById('heatmap_table_div'));
+        
+        table.draw(data, {
+            allowHtml: true, 
+            showRowNumber: false, 
+            width: '100%', 
+            height: '100%'
+        });
+      }
+      
+      window.addEventListener('resize', drawCharts);
+      
+    </script>
+
+</body>
+</html>
+
