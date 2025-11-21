@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explainable AI Tutor Platform | Product Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    
+    <div class="max-w-7xl mx-auto p-10">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Explainable AI Tutor Platform</h1>
+            <p class="text-xl text-gray-600 font-light">Production-Ready Governance & Instructional Architecture</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <div class="lg:col-span-1">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Product Abstract</h3>
+                <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+                    This platform serves as a comprehensive reference architecture for a <strong>standards-compliant AI Tutor</strong> in secondary education. 
+                    <br><br>
+                    Unlike "black box" generative tools, this system implements a <strong>Dual-Axis Scoring Engine</strong> (Correctness + Explanation Quality) and a Multi-Agent RAG backend to ensure traceability, safety, and COPPA/FERPA compliance.
+                </p>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-600 text-blue-800 p-4 rounded-lg text-left">
+                    <p class="text-xs"><strong>Prototype Context:</strong> This hub provides high-fidelity UX visualizations for the four key stakeholders. <br><br>
+                    <a href="https://ai-tutor-demo-a6cs.onrender.com/" target="_blank" class="underline font-bold hover:text-blue-900">Launch Live RAG Backend ↗</a></p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-2">
+                <h3 class="text-xl font-semibold text-gray-700 mb-8 text-center">Select a Stakeholder View</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <a href="admin.html" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="assets/anna-admin.png" alt="Anna Admin Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                        <h2 class="text-2xl font-semibold text-gray-900 text-center">Admin</h2>
+                        <p class="text-gray-500 text-center text-sm">Governance & ROI</p>
+                    </a>
+                    
+                    <a href="teacher.html" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="assets/tom-teacher.png" alt="Tom Teacher Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                        <h2 class="text-2xl font-semibold text-gray-900 text-center">Teacher</h2>
+                        <p class="text-gray-500 text-center text-sm">Oversight & Intervention</p>
+                    </a>
+
+                    <a href="parent.html" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="assets/paula-parent.png" alt="Paula Parent Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                        <h2 class="text-2xl font-semibold text-gray-900 text-center">Parent</h2>
+                        <p class="text-gray-500 text-center text-sm">Transparency & Safety</p>
+                    </a>
+
+                    <a href="student.html" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="assets/steve-student.png" alt="Steve Student Persona" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200">
+                        <h2 class="text-2xl font-semibold text-gray-900 text-center">Student</h2>
+                        <p class="text-gray-500 text-center text-sm">Engagement & Feedback</p>
+                    </a>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="personas.html" class="text-sm font-medium text-blue-600 hover:underline">
+                        View Detailed User Personas &rarr;
+                    </a>
+                </div>
+            </div>
+
+<div class="lg:col-span-1">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Technical Blueprints</h3>
+                
+                <p class="text-gray-600 mb-6 text-sm">
+                    Access the complete <strong>Product Requirement Document (PRD) & Technical Blueprint</strong>. 
+                    <br><br>
+                    This comprehensive specification details the <strong>Multi-Agent RAG Architecture</strong>, 
+                    <strong>Dual-Axis Scoring Logic</strong>, <strong>Metrics</strong>, <strong>User Stories</strong>, 
+                    and the full <strong>NIST AI RMF Governance</strong> framework.
+                </p>
+                
+                <div class="bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition text-center mb-6">
+                    <div class="text-4xl mb-2">📄</div>
+                    <div class="font-bold text-gray-800">Product & Technical Specification</div>
+                    
+                    <div class="text-xs text-gray-500 mb-4">PDF | PRD + Architecture + Governance</div>
+                    
+                    <a href="assets/Explainable_AI_Tutor_Technical_Blueprint.pdf" target="_blank" class="block w-full bg-blue-600 text-white text-sm font-bold py-2 px-4 rounded hover:bg-blue-700 transition">
+                        Coming Soon
+                    </a>
+                </div>
+
+                 <div class="mt-8">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase tracking-wide mb-3">Built With</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Python 3.10 & Flask</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Google Gemini 2.5 (API)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>RAG / Multi-Agent</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>NIST AI RMF 1.0</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Render & Streamlit</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
