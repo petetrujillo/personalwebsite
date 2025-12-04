@@ -1118,23 +1118,17 @@
                             </h3>
                             
                             <div class="mb-6">
-                                <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Master of Science</h4>
-                                <p class="font-medium text-orange-600">AI Management & Policy</p>
-                                <p class="text-slate-500 text-sm">Purdue University (Dec 2025)<img src="https://badgen.net/static/GPA/4.0/green?icon=trophy?style=flat" alt="4.0 Grade Point Average" class="ml-2"></p>
+								<h4 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Master of Science</h4>
+								<p class="font-medium text-orange-600">AI Management & Policy</p>
+								<p class="text-slate-500 text-sm flex items-center whitespace-nowrap">Purdue University (Dec 2025)<img src="https://badgen.net/static/GPA/4.0/green?icon=trophy?style=flat" alt="4.0 Grade Point Average" class="ml-2 inline-block"></p>
 								<div class="mt-4 pt-4 border-t border-slate-200">
-                                    <h5 class="text-sm font-semibold text-slate-700 mb-2">Key Coursework:</h5>
-                                    <ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
-                                        <li>Artificial Intelligence Policy, Governance, & Ethics</li>
-                                        <li>Societal Impacts of Artificial Intelligence</li>
-                                    </ul>
-                                </div>
-                                <BR>
-                                 <h5 class="text-sm font-semibold text-slate-700 mb-2">Graduate Certifications:</h5>
-                                    <ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
-                                    <li>Graduate Certificate, Foundations in AI</li>
-                                    <li>Graduate Certificate, Applied Data Analytics</li>
-                                </ul>
-                            </div>
+									<h5 class="text-sm font-semibold text-slate-700 mb-2">Key Coursework:</h5>
+									<ul class="list-disc list-inside text-slate-500 text-sm space-y-1">
+										<li>Artificial Intelligence Policy, Governance, & Ethics</li>
+										<li>Societal Impacts of Artificial Intelligence</li>
+									</ul>
+								</div>
+							</div>
                             
                             <div>
                                 <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Bachelor of Science</h4>
@@ -1156,7 +1150,7 @@
                             <ul class="space-y-3">
                                 <li class="flex items-center gap-3 opacity-75">
                                     <i data-lucide="hourglass" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
-                                    <span class="text-slate-700">AIGP (AIPP) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
+                                    <span class="text-slate-700">AIGP (IAPP) <span class="text-sm text-slate-500">(In Progress - 2025)</span></span>
                                 </li>
                                 <li class="flex items-center gap-3 opacity-75">
                                     <i data-lucide="hourglass" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
